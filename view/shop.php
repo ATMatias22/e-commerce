@@ -1,5 +1,6 @@
 <?php
-require_once("assets/templates/header.php");
+require_once("../templates/header.php");
+
 ?>
 <main>
   <!-- Hero Area Start-->
@@ -413,7 +414,8 @@ require_once("assets/templates/header.php");
   </div>
   <!-- Shop Method End-->
 </main>
+
 <?php
-require_once("./assets/templates/footer.php")
+require_once("../templates/footer.php");
 
 ?>
