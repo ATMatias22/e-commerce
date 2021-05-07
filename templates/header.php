@@ -53,7 +53,7 @@
                 <ul id="navigation">
                   <li><a href="view/index.php">Home</a></li>
                   <li><a href="view/shop.php">shop</a></li>
-                  <li><a href="about.php">about</a></li>
+                  <li><a href="view/about.php">about</a></li>
                   <li><a href="#">Pages</a>
                     <ul class="submenu">
                       <li><a href="login.php">Login</a></li>
@@ -63,7 +63,7 @@
                       <li><a href="checkout.php">Product Checkout</a></li>
                     </ul>
                   </li>
-                  <li><a href="contact.php">Contact</a></li>
+                  <li><a href="view/contact.php">Contact</a></li>
                 </ul>
               </nav>
             </div>
@@ -76,7 +76,7 @@
                   </div>
                 </li>
                 <li> <a href="view/login.php"><span class="flaticon-user"></span></a></li>
-                <li><a href="cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
+                <li><a href="view/cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
               </ul>
             </div>
           </div>

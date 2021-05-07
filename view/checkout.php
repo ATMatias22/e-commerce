@@ -1,6 +1,6 @@
 <?php
 
-require_once("assets/templates/header.php");
+require_once("../templates/header.php");
 
 
 ?>
@@ -217,6 +217,6 @@ require_once("assets/templates/header.php");
   <!--================End Checkout Area =================-->
 </main>
 <?php
-require_once("./assets/templates/footer.php")
+require_once("../templates/footer.php");
 
 ?>

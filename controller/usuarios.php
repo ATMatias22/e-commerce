@@ -8,26 +8,21 @@ class usuarios
   function login()
   {
 
+
     if (isset($_POST["username"]) && isset($_POST["password"])) {
-
-      if (!empty($_POST["username"]) && !empty($_POST["pasword"])) {
-
+      if (empty($_POST["username"]) && empty($_POST["pasword"])) {
+        $_SESSION["msg"] = "Campos incompletos";
+        require_once("view/login.php");
+      } else {
         if (UsuariosDAO::existeUsuario($_POST["username"], $_POST["password"])) {
-
           $_SESSION["username"] = $_POST["username"];
           require_once("view/home.php");
         } else {
-
           $_SESSION["msg"] = "El usuario no existe";
           require_once("view/login.php");
         }
-      } else {
-
-        $_SESSION["msg"] = "Campos incompletos";
-        require_once("view/login.php");
       }
     } else {
-
       $_SESSION["msg"] = "Campos incompletos";
       require_once("view/login.php");
     }
@@ -38,7 +33,10 @@ class usuarios
 
     if (isset($_POST["username"]) && isset($_POST["password"])) {
 
-      if (!empty($_POST["username"]) && !empty($_POST["pasword"])) {
+      if (empty($_POST["username"]) && empty($_POST["pasword"])) {
+        $_SESSION["msg"] = "Campos incompletos";
+        require_once("view/login.php");
+      } else {
 
         if (!UsuariosDAO::usuarioOcupado($_POST["username"])) {
 
@@ -50,10 +48,6 @@ class usuarios
           $_SESSION["msg"] = "El usuario ya existe";
           require_once("view/login.php");
         }
-      } else {
-
-        $_SESSION["msg"] = "Campos incompletos";
-        require_once("view/login.php");
       }
     } else {
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once("../templates/header.php");
+/* require_once("../templates/header.php"); */
 
 
 ?>
@@ -37,7 +37,7 @@ require_once("../templates/header.php");
             <div class="login_part_form_iner">
               <h3>Welcome Back ! <br>
                 Please Sign in now</h3>
-              <form class="row contact_form" action="index.php?controller=usuarios&action=login" method="post" novalidate="novalidate">
+              <form class="row contact_form" action="../index.php?controller=usuarios&action=login" method="POST">
                 <div class="col-md-12 form-group p_star">
                   <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
                 </div>
@@ -64,6 +64,6 @@ require_once("../templates/header.php");
   <!--================login_part end =================-->
 </main>
 <?php
-require_once("../templates/footer.php")
+/* require_once("../templates/footer.php") */
 
 ?>

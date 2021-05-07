@@ -1,6 +1,6 @@
 <?php
 
-require_once("assets/templates/header.php");
+require_once("../templates/header.php");
 
 
 ?>
@@ -358,6 +358,6 @@ require_once("assets/templates/header.php");
   <!-- ================ contact section end ================= -->
 </main>
 <?php
-require_once("./assets/templates/footer.php")
+require_once("../templates/footer.php");
 
 ?>

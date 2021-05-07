@@ -1,8 +1,6 @@
 <?php
 
-require_once("./routes_constants_templates.php");
-
-require_once(ROUTE_HEADER_TEMPLATE);
+require_once("../templates/header.php");
 
 
 ?>
@@ -98,6 +96,6 @@ require_once(ROUTE_HEADER_TEMPLATE);
   <!-- Shop Method End-->
 </main>
 <?php
-require_once(ROUTE_FOOTER_TEMPLATE);
+require_once("../templates/footer.php");
 
 ?>

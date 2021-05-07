@@ -1,6 +1,6 @@
 <?php
 
-require_once("assets/templates/header.php");
+require_once("../templates/header.php");
 
 
 ?>
@@ -38,9 +38,9 @@ require_once("assets/templates/header.php");
               <h3>
                 Please sign up
                 now</h3>
-              <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+              <form class="row contact_form" action="../index.php?controller=usuarios&action=registrar" method="post" novalidate="novalidate">
                 <div class="col-md-12 form-group p_star">
-                  <input type="text" class="form-control" id="name" name="name" value="" placeholder="Username">
+                  <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
                 </div>
                 <div class="col-md-12 form-group p_star">
                   <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
@@ -65,6 +65,6 @@ require_once("assets/templates/header.php");
   <!--================login_part end =================-->
 </main>
 <?php
-require_once("./assets/templates/footer.php")
+require_once("../templates/footer.php")
 
 ?>
