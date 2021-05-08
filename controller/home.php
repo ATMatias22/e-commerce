@@ -4,6 +4,8 @@ class home
 {
   function inicio()
   {
-    require_once("view/home.php");
+    /* require_once("view/home.php"); */
+    header("location: view/home.php");
+
   }
 }

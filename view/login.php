@@ -1,7 +1,10 @@
 <?php
+session_start();
 
-/* require_once("../templates/header.php"); */
-
+if (isset($_SESSION['username'])) {
+  header('Location: ../index.php');
+}
+require_once("../templates/header.php");
 
 ?>
 <main>
@@ -35,6 +38,12 @@
         <div class="col-lg-6 col-md-6">
           <div class="login_part_form">
             <div class="login_part_form_iner">
+
+              <?php if(isset($_SESSION['msg'])){
+                echo "<h2 style='color:red'>{$_SESSION['msg']}</h2>"; 
+                unset($_SESSION['msg']);
+              }
+                ?>
               <h3>Welcome Back ! <br>
                 Please Sign in now</h3>
               <form class="row contact_form" action="../index.php?controller=usuarios&action=login" method="POST">
@@ -64,6 +73,6 @@
   <!--================login_part end =================-->
 </main>
 <?php
-/* require_once("../templates/footer.php") */
+require_once("../templates/footer.php")
 
 ?>
