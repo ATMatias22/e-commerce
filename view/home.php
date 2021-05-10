@@ -44,7 +44,7 @@ require_once("../templates/header.php");
                   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
                 <!-- Hero-btn -->
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                  <a href="industries.html" class="btn hero-btn">Shop Now</a>
+                  <a href="shop.php" class="btn hero-btn">Shop Now</a>
                 </div>
               </div>
             </div>
