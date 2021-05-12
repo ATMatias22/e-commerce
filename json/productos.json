@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "nombre": "Reloj 1",
+    "precio": 10000,
+    "nuevo": 0,
+    "popular": 0
+  },
+  {
+    "id": 2,
+    "nombre": "Reloj 2",
+    "precio": 20000,
+    "nuevo": 1,
+    "popular": 0
+  },
+  {
+    "id": 3,
+    "nombre": "Reloj 3",
+    "precio": 30000,
+    "nuevo": 0,
+    "popular": 1
+  },
+  {
+    "id": 4,
+    "nombre": "Reloj 4",
+    "precio": 40000,
+    "nuevo": 1,
+    "popular": 0
+  },
+  {
+    "id": 5,
+    "nombre": "Reloj 5",
+    "precio": 50000,
+    "nuevo": 0,
+    "popular": 1
+  },
+  {
+    "id": 6,
+    "nombre": "Reloj 6",
+    "precio": 60000,
+    "nuevo": 1,
+    "popular": 1
+  },
+  {
+    "id": 7,
+    "nombre": "Reloj 7",
+    "precio": 70000,
+    "nuevo": 1,
+    "popular": 1
+  },
+  {
+    "id": 8,
+    "nombre": "Reloj 8",
+    "precio": 50000,
+    "nuevo": 1,
+    "popular": 0
+  }
+]

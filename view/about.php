@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once("../templates/header.php");
 
+require_once("./view/constantes.php");
+require_once(HEADER_TEMPLATE);
 
 ?>
 <main>
@@ -96,6 +97,6 @@ require_once("../templates/header.php");
   <!-- Shop Method End-->
 </main>
 <?php
-require_once("../templates/footer.php");
+require_once(FOOTER_TEMPLATE);
 
 ?>

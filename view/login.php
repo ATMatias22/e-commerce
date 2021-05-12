@@ -1,11 +1,17 @@
 <?php
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
+
 
 if (isset($_SESSION['username'])) {
-  header('Location: ../index.php');
+  header('Location: ./index.php');
+ die();
 }
-require_once("../templates/header.php");
 
+
+require_once("./view/constantes.php");
+require_once(HEADER_TEMPLATE);
 ?>
 <main>
   <!-- Hero Area Start-->
@@ -31,7 +37,7 @@ require_once("../templates/header.php");
           <div class="login_part_text text-center w-100">
             <div class="login_part_text_iner">
               <h2>New to our Shop?</h2>
-              <a href="./register.php" class="btn_3">Create an Account</a>
+              <a href="./index.php?controller=home&action=register" class="btn_3">Create an Account</a>
             </div>
           </div>
         </div>
@@ -39,14 +45,14 @@ require_once("../templates/header.php");
           <div class="login_part_form">
             <div class="login_part_form_iner">
 
-              <?php if(isset($_SESSION['msg'])){
-                echo "<h2 style='color:red'>{$_SESSION['msg']}</h2>"; 
+              <?php if (isset($_SESSION['msg'])) {
+                echo "<h2 style='color:red'>{$_SESSION['msg']}</h2>";
                 unset($_SESSION['msg']);
               }
-                ?>
+              ?>
               <h3>Welcome Back ! <br>
                 Please Sign in now</h3>
-              <form class="row contact_form" action="../index.php?controller=usuarios&action=login" method="POST">
+              <form class="row contact_form" action="./index.php?controller=usuarios&action=login" method="POST">
                 <div class="col-md-12 form-group p_star">
                   <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
                 </div>
@@ -73,6 +79,6 @@ require_once("../templates/header.php");
   <!--================login_part end =================-->
 </main>
 <?php
-require_once("../templates/footer.php")
+require_once(FOOTER_TEMPLATE)
 
 ?>

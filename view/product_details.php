@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-require_once("../templates/header.php");
+require_once("./view/constantes.php");
+require_once(HEADER_TEMPLATE);
 
 
 ?>
@@ -28,13 +28,13 @@ require_once("../templates/header.php");
         <div class="col-lg-12">
           <div class="product_img_slide owl-carousel">
             <div class="single_product_img">
-              <img src="../assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
+              <img src="./public/assets/img/products/producto<?= $producto->getId() ?>.png" alt="#" class="img-fluid">
             </div>
             <div class="single_product_img">
-              <img src="../assets/img/gallery/gallery01.png" alt="#" class="img-fluid">
+              <img src="./public/assets/img/products/producto<?= $producto->getId() ?>.png" alt="#" class="img-fluid">
             </div>
             <div class="single_product_img">
-              <img src="../assets/img/gallery/gallery1.png" alt="#" class="img-fluid">
+              <img src="./public/assets/img/products/producto<?= $producto->getId() ?>.png" alt="#" class="img-fluid">
             </div>
           </div>
         </div>
@@ -85,6 +85,6 @@ require_once("../templates/header.php");
   <!-- subscribe part end -->
 </main>
 <?php
-require_once("../templates/footer.php");
+require_once(FOOTER_TEMPLATE);
 
 ?>

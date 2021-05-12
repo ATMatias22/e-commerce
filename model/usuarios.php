@@ -3,7 +3,7 @@
   class UsuariosDAO
   {
 
-    public static $FILE = "model/usuarios.json";
+    public static $FILE = "./json/usuarios.json";
 
     public static function usuarioOcupado($usuario)
     {
@@ -60,7 +60,7 @@
 
       $jsondata = json_encode($arr_usuarios, JSON_PRETTY_PRINT);
 
-      file_put_contents("model/usuarios.json", $jsondata);
+      file_put_contents(UsuariosDAO::$FILE, $jsondata);
     }
   }
 

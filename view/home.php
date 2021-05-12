@@ -1,6 +1,12 @@
 <?php
-session_start();
-require_once("../templates/header.php");
+
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
+
+require_once("./view/constantes.php");
+require_once(HEADER_TEMPLATE);
+
 
 ?>
 
@@ -20,13 +26,13 @@ require_once("../templates/header.php");
                   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p> -->
                 <!-- Hero-btn -->
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                  <a href="shop.php" class="btn hero-btn">Shop Now</a>
+                  <a href="./index.php?controller=home&action=shop" class="btn hero-btn">Shop Now</a>
                 </div>
               </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
               <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                <img src="../assets/img/hero/watch.png" alt="" class=" heartbeat">
+                <img src="./public/assets/img/hero/watch.png" alt="" class=" heartbeat">
               </div>
             </div>
           </div>
@@ -44,13 +50,13 @@ require_once("../templates/header.php");
                   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
                 <!-- Hero-btn -->
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                  <a href="shop.php" class="btn hero-btn">Shop Now</a>
+                  <a href="./index.php?controller=home&action=shop" class="btn hero-btn" class="btn hero-btn">Shop Now</a>
                 </div>
               </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
               <div class="hero__img" data-animation="bounceIn" data-delay=".4s">
-                <img src="../assets/img/hero/watch.png" alt="" class=" heartbeat">
+                <img src="./public/assets/img/hero/watch.png" alt="" class=" heartbeat">
               </div>
             </div>
           </div>
@@ -70,40 +76,31 @@ require_once("../templates/header.php");
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-          <div class="single-new-pro mb-30 text-center">
-            <div class="product-img">
-              <img src="../assets/img/gallery/new_product1.png" alt="">
-            </div>
-            <div class="product-caption">
-              <h3><a href="product_details.php">Thermo Ball Etip Gloves</a></h3>
-              <span>$ 45,743</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-          <div class="single-new-pro mb-30 text-center">
-            <div class="product-img">
-              <img src="../assets/img/gallery/new_product2.png" alt="">
-            </div>
-            <div class="product-caption">
-              <h3><a href="product_details.php">Thermo Ball Etip Gloves</a></h3>
-              <span>$ 45,743</span>
+      <div class="row justify-content-center">
+
+        <?php
+
+        foreach ($array_prod as $prod) {
+          $id = $prod->getId();
+          $precio = $prod->getPrecio();
+          $nombre = $prod->getNombre();
+        ?>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+            <div class="single-new-pro mb-30 text-center">
+              <div class="product-img">
+                <img src="./public/assets/img/products/producto<?= $id ?>.png" alt="">
+              </div>
+              <div class="product-caption">
+                <h3><a href="./index.php?controller=productos&action=mostrarProducto&productoID=<?=$id?>"><?= $nombre ?></a></h3>
+                <span>$<?= $precio ?></span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-          <div class="single-new-pro mb-30 text-center">
-            <div class="product-img">
-              <img src="../assets/img/gallery/new_product3.png" alt="">
-            </div>
-            <div class="product-caption">
-              <h3><a href="product_details.php">Thermo Ball Etip Gloves</a></h3>
-              <span>$ 45,743</span>
-            </div>
-          </div>
-        </div>
+
+        <?php
+        }
+        ?>
+
       </div>
     </div>
   </section>
@@ -114,25 +111,25 @@ require_once("../templates/header.php");
       <div class="row">
         <div class="col-xl-6 col-lg-4 col-md-6 col-sm-6">
           <div class="single-gallery mb-30">
-            <div class="gallery-img big-img" style="background-image: url(../assets/img/gallery/gallery1.png);"></div>
+            <div class="gallery-img big-img" style="background-image: url(./public/assets/img/gallery/gallery1.png);"></div>
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
           <div class="single-gallery mb-30">
-            <div class="gallery-img big-img" style="background-image: url(../assets/img/gallery/gallery2.png);"></div>
+            <div class="gallery-img big-img" style="background-image: url(./public/assets/img/gallery/gallery2.png);"></div>
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-12">
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6">
               <div class="single-gallery mb-30">
-                <div class="gallery-img small-img" style="background-image: url(../assets/img/gallery/gallery3.png);">
+                <div class="gallery-img small-img" style="background-image: url(./public/assets/img/gallery/gallery3.png);">
                 </div>
               </div>
             </div>
             <div class="col-xl-12 col-lg-12  col-md-6 col-sm-6">
               <div class="single-gallery mb-30">
-                <div class="gallery-img small-img" style="background-image: url(../assets/img/gallery/gallery4.png);">
+                <div class="gallery-img small-img" style="background-image: url(./public/assets/img/gallery/gallery4.png);">
                 </div>
               </div>
             </div>
@@ -181,7 +178,7 @@ require_once("../templates/header.php");
 
 
 <?php
-require_once("../templates/footer.php");
+require_once(FOOTER_TEMPLATE);
 
 
 ?>

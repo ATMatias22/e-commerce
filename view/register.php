@@ -1,7 +1,17 @@
 <?php
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
 
-require_once("../templates/header.php");
+
+if (isset($_SESSION['username'])) {
+  header('Location: ./index.php');
+  die();
+}
+
+
+require_once("./view/constantes.php");
+require_once(HEADER_TEMPLATE);
 
 
 ?>
@@ -29,7 +39,7 @@ require_once("../templates/header.php");
           <div class="login_part_text text-center w-100">
             <div class="login_part_text_iner">
               <h2>Are you already registered?</h2>
-              <a href="./login.php" class="btn_3">Log in</a>
+              <a href="./index.php?controller=home&action=login" class="btn_3">Log in</a>
             </div>
           </div>
         </div>
@@ -39,7 +49,7 @@ require_once("../templates/header.php");
               <h3>
                 Please sign up
                 now</h3>
-              <form class="row contact_form" action="../index.php?controller=usuarios&action=registrar" method="post" novalidate="novalidate">
+              <form class="row contact_form" action="./index.php?controller=usuarios&action=registrar" method="post" novalidate="novalidate">
                 <div class="col-md-12 form-group p_star">
                   <input type="text" class="form-control" id="username" name="username" value="" placeholder="Username">
                 </div>
@@ -66,6 +76,6 @@ require_once("../templates/header.php");
   <!--================login_part end =================-->
 </main>
 <?php
-require_once("../templates/footer.php")
+require_once(FOOTER_TEMPLATE)
 
 ?>
