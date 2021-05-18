@@ -1,5 +1,6 @@
 <?php
 require_once("model/productos.php");
+session_start();
 
 class productos
 {
@@ -33,7 +34,13 @@ class productos
 
   public function mostrarProducto()
   {
-    $producto = productosDAO::mostrarProducto($_GET['productoID']);
-    require_once("view/product_details.php");
+    $idProducto = $_GET['productoID'];
+    $producto = productosDAO::mostrarProducto($idProducto);
+    if($producto == null){
+      $mensaje = "El producto {$idProducto} no existe en nuestro sitio";
+      require_once("view/error.php");
+    }else{
+      require_once("view/product_details.php");
+    }
   }
 }

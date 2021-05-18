@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
 

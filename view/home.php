@@ -1,8 +1,5 @@
 <?php
 
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
 
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
@@ -26,7 +23,7 @@ require_once(HEADER_TEMPLATE);
                   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p> -->
                 <!-- Hero-btn -->
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                  <a href="./index.php?controller=home&action=shop" class="btn hero-btn">Shop Now</a>
+                  <a href="./index.php?controller=productos&action=shop" class="btn hero-btn">Shop Now</a>
                 </div>
               </div>
             </div>
@@ -50,7 +47,7 @@ require_once(HEADER_TEMPLATE);
                   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat is aute irure.</p>
                 <!-- Hero-btn -->
                 <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s" data-duration="2000ms">
-                  <a href="./index.php?controller=home&action=shop" class="btn hero-btn" class="btn hero-btn">Shop Now</a>
+                  <a href="./index.php?controller=productos&action=shop" class="btn hero-btn" class="btn hero-btn">Shop Now</a>
                 </div>
               </div>
             </div>

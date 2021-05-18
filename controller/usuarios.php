@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once("model/usuarios.php");
-/* require_once("model/productos.php"); */
 
 class usuarios
 {
@@ -14,8 +13,7 @@ class usuarios
       if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         if (UsuariosDAO::existeUsuario($_POST["username"], $_POST["password"])) {
           $_SESSION["username"] = $_POST["username"];
-        /*   $array_prod = productosDAO::productosNuevos(); */
-          require_once("view/home.php");
+          header("Location: ./index.php?controller=home&action=inicio");
         } else {
           $_SESSION["msg"] = "El usuario no existe";
           require_once("view/login.php");

@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="./public/assets/css/slick.css">
   <link rel="stylesheet" href="./public/assets/css/nice-select.css">
   <link rel="stylesheet" href="./public/assets/css/style.css">
+
 </head>
 
 <body>
@@ -75,10 +76,12 @@
                   </div>
                 </li>
                 <li><a href="./cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
-                <li> <a href="./index.php?controller=home&action=login"><span class="flaticon-user" <?php if (isset($_SESSION['username'])) 
-                {echo "style='color:red'";}?>>
-                <?php if (isset($_SESSION['username'])) {
-                  echo $_SESSION['username'];}?></span></a></li>
+                <li> <a href="./index.php?controller=home&action=login"><span class="flaticon-user" <?php if (isset($_SESSION['username'])) {
+                                                                                                      echo "style='color:red'";
+                                                                                                    } ?>>
+                      <?php if (isset($_SESSION['username'])) {
+                        echo $_SESSION['username'];
+                      } ?></span></a></li>
 
                 <!--   CREAMOS OTRO LI PARA PONER EL ICONO DE LOGOUT -->
                 <?php if (isset($_SESSION['username'])) {

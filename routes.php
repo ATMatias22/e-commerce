@@ -20,8 +20,8 @@ if (array_key_exists($controller, $controllers)) {
   if (in_array($action, $controllers[$controller])) {
     call($controller, $action);
   } else {
-    call('errorController', 'error');
+    call('viewError', 'errorRuta');
   }
 } else {
-  call('errorController', 'error');
+  call('viewError', 'errorRuta');
 }

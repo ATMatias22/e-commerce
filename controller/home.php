@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 require_once("model/productos.php");
 
 class home
@@ -12,7 +14,11 @@ class home
 
   function login()
   {
-    require_once("view/login.php");
+    if(isset($_SESSION['username'])){
+      $this->inicio();
+    }else{
+      require_once("view/login.php");
+    }
   }
 
   function about()
@@ -35,11 +41,17 @@ class home
   }
   function register()
   {
-    require_once("view/register.php");
+    if (isset($_SESSION['username'])) {
+      $this->inicio();
+    } else {
+      require_once("view/register.php");
+    }
   }
 
   function cerrar_sesion()
   {
     require_once("view/cerrar_sesion.php");
   }
+
+
 }

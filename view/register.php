@@ -1,13 +1,4 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-  session_start();
-}
-
-
-if (isset($_SESSION['username'])) {
-  header('Location: ./index.php');
-  die();
-}
 
 
 require_once("./view/constantes.php");
