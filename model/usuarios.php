@@ -3,7 +3,6 @@
   class UsuariosDAO
   {
     public static $FILE = "./json/usuarios.json";
-    public static $FILE_PREGUNTA = "./json/comentarios.json";
     private $id;
     private $usuario;
     private $password;

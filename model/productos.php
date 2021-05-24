@@ -9,7 +9,6 @@ class productosDAO
   private $descripcion;
   private $nuevo;
   private $popular;
-  private $comentarios;
   public static $FILE = "./json/productos.json";
 
 
@@ -21,7 +20,6 @@ class productosDAO
     $this->descripcion = $descripcion;
     $this->nuevo = $nuevo;
     $this->popular = $popular;
-    $this->comentarios = [];
   }
 
   public function getId(){
@@ -47,11 +45,6 @@ class productosDAO
   {
     return $this->descripcion;
   }
-
-  public function agregarComentario($comentario){
-      array_push($this->comentarios, $comentario);
-  }
-
 
   /*FUNCION PARA PODER ORDENAR DE MANERA DESCENDENTE O ASCENDENTE POR ATRIBUTO ELEGIDO*/
   public static function array_sort_by(&$arrIni, $col, $order = SORT_ASC)
@@ -151,19 +144,4 @@ class productosDAO
     return $ObjetoProducto;
   }
 
-  public static function  obtenerComentariosProducto($id)
-  {
-    $content = file_get_contents(productosDAO::$FILE);
-    $arr_productos = json_decode($content, true);
-    $ObjetoProducto = null;
-    $i = 0;
-    while ($i < sizeof($arr_productos) && $ObjetoProducto == null) {
-      $aux = $arr_productos[$i];
-      if ($aux['id'] == $id) {
-        $ObjetoProducto = new productosDAO($aux['id'], $aux['nombre'], $aux['precio'], $aux['descripcion'], $aux['nuevo'], $aux['popular']);
-      }
-      $i++;
-    }
-    return $ObjetoProducto;
-  }
 }

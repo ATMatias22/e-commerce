@@ -1,1 +1,51 @@
-[]
+[
+    {
+        "id_comentario": 1,
+        "id_producto": "2",
+        "id_usuario": 1,
+        "comentario": "vava",
+        "fecha_publicacion": "2021-05-24 05:28"
+    },
+    {
+        "id_comentario": 2,
+        "id_producto": "2",
+        "id_usuario": 1,
+        "comentario": "sasa",
+        "fecha_publicacion": "2021-05-24 05:28"
+    },
+    {
+        "id_comentario": 3,
+        "id_producto": "2",
+        "id_usuario": 1,
+        "comentario": "qaqa",
+        "fecha_publicacion": "2021-05-24 05:28"
+    },
+    {
+        "id_comentario": 4,
+        "id_producto": "2",
+        "id_usuario": 1,
+        "comentario": "vava",
+        "fecha_publicacion": "2021-05-24 05:30"
+    },
+    {
+        "id_comentario": 5,
+        "id_producto": "2",
+        "id_usuario": 1,
+        "comentario": "aca",
+        "fecha_publicacion": "2021-05-24 05:34"
+    },
+    {
+        "id_comentario": 6,
+        "id_producto": "4",
+        "id_usuario": 2,
+        "comentario": "aca",
+        "fecha_publicacion": "2021-05-24 05:38"
+    },
+    {
+        "id_comentario": 7,
+        "id_producto": "4",
+        "id_usuario": 2,
+        "comentario": "aca",
+        "fecha_publicacion": "2021-05-24 05:39"
+    }
+]

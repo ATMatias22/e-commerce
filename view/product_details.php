@@ -68,19 +68,44 @@ require_once(HEADER_TEMPLATE);
   </div>
 
   <div class=" contenedor mx-3 px-3 mb-5">
-    <h1 class="titulo"> Dejenos su pregunta</h1>
+    <h1 class="titulo"> Dejenos su comentario</h1>
 
-    <form action="./index.php?controller=productos&action=mostrarProducto&productoID=<?= $idProducto?>" id="formulario" method="post">
+    <form action="./index.php?controller=productos&action=mostrarProducto&productoID=<?= $idProducto ?>" id="formulario" method="post">
       <div class="form-group">
-        <input type="text" name="in_pregunta" class="form-control" id="exampleFormControlInput1" placeholder="Coloque su pregunta aca" required>
+        <input type="text" name="in_comentario" class="form-control" id="exampleFormControlInput1" placeholder="Coloque su comentario aca" required>
       </div>
 
-      <input type="hidden" name="id_producto" value=<?= $idProducto?>>
-      <input type="submit" class="btn btn-lg btn-block boton" name="in_enviar_pregunta" value="Enviar">
+      <input type="submit" class="btn btn-lg btn-block boton" name="in_enviar_comentario" value="Enviar">
 
 
     </form>
   </div>
+
+  <div class=" contenedor mx-3 px-3 mb-5 mt-5">
+    <h1 class="titulo ">Comentarios</h1>
+
+    <?php
+    foreach ($comentarios as $com) {
+    ?>
+
+      <div style='border: 2px grey solid;'>
+        <div style=" margin: 15px;">
+
+          <div><?= $com->getIdUsuario() ?></div>
+          <div style="margin: 15px;"><?= $com->getComentario() ?></div>
+
+          <div class="text-right">
+            <?=$com->getFechaDePublicacion()?>
+          </div>
+        </div>
+
+      </div>
+
+    <?php
+    }
+    ?>
+  </div>
+
 
 
   <!--================End Single Product Area =================-->
