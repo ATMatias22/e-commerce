@@ -7,20 +7,10 @@ class home
 {
   function inicio()
   {
-
     $array_prod = productosDAO::productosNuevos();
-     require_once("view/home.php"); 
-  }
+    require_once("view/home.php");
 
-  function login()
-  {
-    if(isset($_SESSION['username'])){
-      $this->inicio();
-    }else{
-      require_once("view/login.php");
-    }
   }
-
   function about()
   {
     require_once("view/about.php");
@@ -39,8 +29,21 @@ class home
   {
     require_once("view/checkout.php");
   }
+
+
+
+  function login()
+  {
+    if (isset($_SESSION['username'])) {
+      $this->inicio();
+    } else {
+      require_once("view/login.php");
+    }
+  }
+
   function register()
   {
+
     if (isset($_SESSION['username'])) {
       $this->inicio();
     } else {
@@ -48,10 +51,9 @@ class home
     }
   }
 
+
   function cerrar_sesion()
   {
     require_once("view/cerrar_sesion.php");
   }
-
-
 }

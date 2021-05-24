@@ -7,12 +7,14 @@ class usuarios
 
   function login()
   {
- 
+
     if (isset($_POST["username"]) && isset($_POST["password"])) {
 
       if (!empty($_POST["username"]) && !empty($_POST["password"])) {
-        if (UsuariosDAO::existeUsuario($_POST["username"], $_POST["password"])) {
+        $usuarioID = UsuariosDAO::buscarUsuario($_POST["username"], $_POST["password"]);
+        if ($usuarioID !== null) {
           $_SESSION["username"] = $_POST["username"];
+          $_SESSION["id"] = $usuarioID;
           header("Location: ./index.php?controller=home&action=inicio");
         } else {
           $_SESSION["msg"] = "El usuario no existe";
@@ -36,10 +38,13 @@ class usuarios
       if (!empty($_POST["username"]) && !empty($_POST["password"])) {
 
         if (!UsuariosDAO::usuarioOcupado($_POST["username"])) {
-
-          UsuariosDAO::crearUsuario($_POST["username"], $_POST["password"]);
+          /*  UsuariosDAO::crearUsuario($_POST["username"], $_POST["password"]); */
+          $nuevoUsuario = new UsuariosDAO($_POST['username'], $_POST['password']);
+          $nuevoUsuario->persistirUsuario();
+          $usuarioID = UsuariosDAO::buscarUsuario($_POST["username"], $_POST["password"]);
           $_SESSION["username"] = $_POST["username"];
-           require_once("view/home.php");
+          $_SESSION["id"] = $usuarioID;
+          header("Location: ./index.php?controller=home&action=inicio");
         } else {
           $_SESSION["msg"] = "El usuario ya existe";
           require_once("view/login.php");

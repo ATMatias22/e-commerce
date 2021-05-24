@@ -63,7 +63,7 @@
         <div class="col-xl-7 col-lg-8 col-md-7">
           <div class="footer-copy-right">
             <p>
-        
+
             </p>
           </div>
         </div>
@@ -128,6 +128,10 @@
 <!-- Jquery Plugins, main Jquery -->
 <script src="./public/assets/js/plugins.js"></script>
 <script src="./public/assets/js/main.js"></script>
+
+
+
+<script src="./public/assets/js/script.js"></script>
 
 
 <script src="https://kit.fontawesome.com/8e2b26cfcc.js" crossorigin="anonymous"></script>

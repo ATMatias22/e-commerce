@@ -3,20 +3,25 @@
 
 class productosDAO
 {
-
   private $id;
   private $nombre;
   private $precio;
+  private $descripcion;
   private $nuevo;
   private $popular;
+  private $comentarios;
+  public static $FILE = "./json/productos.json";
 
-  public function __construct($id, $nombre, $precio, $nuevo, $popular)
+
+  public function __construct($id, $nombre, $precio,$descripcion, $nuevo, $popular)
   {
     $this->id = $id;
     $this->nombre = $nombre;
     $this->precio = $precio;
+    $this->descripcion = $descripcion;
     $this->nuevo = $nuevo;
     $this->popular = $popular;
+    $this->comentarios = [];
   }
 
   public function getId(){
@@ -38,6 +43,15 @@ class productosDAO
   {
     return $this->popular;
   }
+  public function getDescripcion()
+  {
+    return $this->descripcion;
+  }
+
+  public function agregarComentario($comentario){
+      array_push($this->comentarios, $comentario);
+  }
+
 
   /*FUNCION PARA PODER ORDENAR DE MANERA DESCENDENTE O ASCENDENTE POR ATRIBUTO ELEGIDO*/
   public static function array_sort_by(&$arrIni, $col, $order = SORT_ASC)
@@ -50,10 +64,6 @@ class productosDAO
     array_multisort($arrAux, $order, $arrIni);
   }
 
-
-
-  public static $FILE = "./json/productos.json";
-
   public static function all()
   {
 
@@ -63,7 +73,7 @@ class productosDAO
     $arr_productosNuevos = [];
 
     foreach ($arr_productos as $prod) {
-      $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'], $prod['nuevo'], $prod['popular']);
+      $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
       array_push($arr_productosNuevos, $ObjetoProducto);
 
     }
@@ -82,7 +92,7 @@ class productosDAO
 
     foreach ($arr_productos as $prod) {
       if ($prod['nuevo'] === 1) {
-        $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'], $prod['nuevo'], $prod['popular']);
+        $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
         array_push($arr_productosNuevos, $ObjetoProducto);
       }
     }
@@ -97,7 +107,7 @@ class productosDAO
     $arr_productos = json_decode($content, true);
     $arr_productosNuevos=[];
     foreach ($arr_productos as $prod) {
-        $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'], $prod['nuevo'], $prod['popular']);
+        $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
         array_push($arr_productosNuevos, $ObjetoProducto);
     }
     self::array_sort_by($arr_productosNuevos, 'precio', SORT_DESC);
@@ -115,7 +125,7 @@ class productosDAO
 
     foreach ($arr_productos as $prod) {
       if ($prod['popular'] === 1) {
-        $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'], $prod['nuevo'], $prod['popular']);
+        $ObjetoProducto = new productosDAO($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
         array_push($arr_productosNuevos, $ObjetoProducto);
       }
     }
@@ -134,7 +144,23 @@ class productosDAO
     while($i < sizeof($arr_productos) && $ObjetoProducto == null){
       $aux = $arr_productos[$i];
       if ($aux['id'] == $id) {
-        $ObjetoProducto = new productosDAO($aux['id'], $aux['nombre'], $aux['precio'], $aux['nuevo'], $aux['popular']);
+        $ObjetoProducto = new productosDAO($aux['id'], $aux['nombre'], $aux['precio'], $aux['descripcion'], $aux['nuevo'], $aux['popular']);
+      }
+      $i++;
+    }
+    return $ObjetoProducto;
+  }
+
+  public static function  obtenerComentariosProducto($id)
+  {
+    $content = file_get_contents(productosDAO::$FILE);
+    $arr_productos = json_decode($content, true);
+    $ObjetoProducto = null;
+    $i = 0;
+    while ($i < sizeof($arr_productos) && $ObjetoProducto == null) {
+      $aux = $arr_productos[$i];
+      if ($aux['id'] == $id) {
+        $ObjetoProducto = new productosDAO($aux['id'], $aux['nombre'], $aux['precio'], $aux['descripcion'], $aux['nuevo'], $aux['popular']);
       }
       $i++;
     }

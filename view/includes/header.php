@@ -75,7 +75,7 @@
                     <span class="flaticon-search"></span>
                   </div>
                 </li>
-                <li><a href="./cart.php"><span class="flaticon-shopping-cart"></span></a> </li>
+                <li><a href="./index.php?controller=home&action=cart"><span class="flaticon-shopping-cart"></span></a> </li>
                 <li> <a href="./index.php?controller=home&action=login"><span class="flaticon-user" <?php if (isset($_SESSION['username'])) {
                                                                                                       echo "style='color:red'";
                                                                                                     } ?>>
