@@ -1,6 +1,9 @@
 <?php
+$nombreSeccion = "Login";
+
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
+
 ?>
 <main>
   <!-- Hero Area Start-->

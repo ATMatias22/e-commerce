@@ -1,5 +1,5 @@
 <?php
-
+$nombreSeccion = "Shop";
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
 
@@ -73,7 +73,7 @@ require_once(HEADER_TEMPLATE);
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="single-popular-items mb-50 text-center">
                   <div class="popular-img">
-                    <img src="./public/assets/img/products/producto<?= $id ?>.png" alt="">
+                    <img src="./public/assets/img/products/product<?=$id?>/producto<?= $id ?>-1.png" alt="">
                     <div class="img-cap">
                       <span>Add to cart</span>
                     </div>

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "nombre": "Reloj 1",
+    "nombre": "Reloj1",
     "precio": 10000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 0,
@@ -9,7 +9,7 @@
   },
   {
     "id": 2,
-    "nombre": "Reloj 2",
+    "nombre": "Reloj2",
     "precio": 20000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 1,
@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "nombre": "Reloj 3",
+    "nombre": "Reloj3",
     "precio": 30000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 0,
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "nombre": "Reloj 4",
+    "nombre": "Reloj4",
     "precio": 40000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 1,
@@ -33,7 +33,7 @@
   },
   {
     "id": 5,
-    "nombre": "Reloj 5",
+    "nombre": "Reloj5",
     "precio": 50000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 0,
@@ -41,7 +41,7 @@
   },
   {
     "id": 6,
-    "nombre": "Reloj 6",
+    "nombre": "Reloj6",
     "precio": 60000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 1,
@@ -49,7 +49,7 @@
   },
   {
     "id": 7,
-    "nombre": "Reloj 7",
+    "nombre": "Reloj7",
     "precio": 70000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 1,
@@ -57,7 +57,7 @@
   },
   {
     "id": 8,
-    "nombre": "Reloj 8",
+    "nombre": "Reloj8",
     "precio": 50000,
     "descripcion": "loremLorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem, explicabo omnis nisi nemo quasi ad id dolores pariatur? Consequatur blanditiis illum veritatis recusandae deleniti ducimus odit officia, facilis hic!",
     "nuevo": 1,

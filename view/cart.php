@@ -1,4 +1,5 @@
 <?php
+$nombreSeccion = "Cart";
 
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
@@ -39,7 +40,7 @@ require_once(HEADER_TEMPLATE);
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="../assets/img/gallery/card1.png" alt="" />
+                      <img src="./public/assets/img/products/product1/producto1-1.png" alt="" />
                     </div>
                     <div class="media-body">
                       <p>Minimalistic shop for multipurpose use</p>
@@ -50,10 +51,14 @@ require_once(HEADER_TEMPLATE);
                   <h5>$360.00</h5>
                 </td>
                 <td>
-                  <div class="product_count">
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                  <div class="card_area m-0 ">
+                    <div class="d-block  product_count_area">
+                      <div class="product_count d-inline-block m-0">
+                        <span class="product_count_item inumber-decrement  w-100" id="menos"> <i class="ti-minus"></i></span>
+                        <input class="product_count_item input-number p-0 w-100" id="cantidad" type="text" value="1" max="100">
+                        <span class="product_count_item number-increment  w-100" id="mas"> <i class="ti-plus"></i></span>
+                      </div>
+                    </div>
                   </div>
                 </td>
                 <td>
@@ -64,7 +69,7 @@ require_once(HEADER_TEMPLATE);
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="../assets/img/gallery/card2.png" alt="" />
+                      <img src="./public/assets/img/products/product1/producto1-1.png" alt="" />
                     </div>
                     <div class="media-body">
                       <p>Minimalistic shop for multipurpose use</p>
@@ -75,17 +80,21 @@ require_once(HEADER_TEMPLATE);
                   <h5>$360.00</h5>
                 </td>
                 <td>
-                  <div class="product_count">
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" value="1" min="0" max="10">
-                    <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                  <div class="card_area m-0 ">
+                    <div class="d-block  product_count_area">
+                      <div class="product_count d-inline-block m-0">
+                        <span class="product_count_item inumber-decrement  w-100" id="menos"> <i class="ti-minus"></i></span>
+                        <input class="product_count_item input-number p-0 w-100" id="cantidad" type="text" value="1" max="100">
+                        <span class="product_count_item number-increment  w-100" id="mas"> <i class="ti-plus"></i></span>
+                      </div>
+                    </div>
                   </div>
                 </td>
                 <td>
                   <h5>$720.00</h5>
                 </td>
               </tr>
-              <tr class="bottom_button">
+             <!--  <tr class="bottom_button">
                 <td>
                   <a class="btn_1" href="#">Update Cart</a>
                 </td>
@@ -96,7 +105,7 @@ require_once(HEADER_TEMPLATE);
                     <a class="btn_1" href="#">Close Coupon</a>
                   </div>
                 </td>
-              </tr>
+              </tr> -->
               <tr>
                 <td></td>
                 <td></td>
@@ -107,7 +116,7 @@ require_once(HEADER_TEMPLATE);
                   <h5>$2160.00</h5>
                 </td>
               </tr>
-              <tr class="shipping_area">
+              <!-- <tr class="shipping_area">
                 <td></td>
                 <td></td>
                 <td>
@@ -151,7 +160,7 @@ require_once(HEADER_TEMPLATE);
                     <a class="btn_1" href="#">Update Details</a>
                   </div>
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
           <div class="checkout_btn_inner float-right">

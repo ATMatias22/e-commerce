@@ -1,5 +1,6 @@
 <?php
 
+$nombreSeccion = "Home";
 
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
@@ -81,11 +82,12 @@ require_once(HEADER_TEMPLATE);
           $id = $prod->getId();
           $precio = $prod->getPrecio();
           $nombre = $prod->getNombre();
+
         ?>
           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
             <div class="single-new-pro mb-30 text-center">
               <div class="product-img">
-                <img src="./public/assets/img/products/producto<?= $id ?>.png" alt="">
+                <img src="./public/assets/img/products/product<?=$id?>/producto<?= $id ?>-1.png" alt="">
               </div>
               <div class="product-caption">
                 <h3><a href="./index.php?controller=productos&action=mostrarProducto&productoID=<?=$id?>"><?= $nombre ?></a></h3>

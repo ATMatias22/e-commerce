@@ -34,6 +34,7 @@ class home
 
   function login()
   {
+
     if (isset($_SESSION['username'])) {
       $this->inicio();
     } else {
@@ -43,7 +44,6 @@ class home
 
   function register()
   {
-
     if (isset($_SESSION['username'])) {
       $this->inicio();
     } else {

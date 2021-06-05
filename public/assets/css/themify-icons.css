@@ -129,6 +129,7 @@
 }
 .ti-minus:before {
 	content: "\e622";
+
 }
 .ti-medall:before {
 	content: "\e623";

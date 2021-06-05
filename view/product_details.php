@@ -1,4 +1,6 @@
 <?php
+$nombreSeccion = "Product Details";
+
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
 
@@ -29,13 +31,13 @@ require_once(HEADER_TEMPLATE);
         <div class="col-md-5 ">
           <div class="product_img_slide owl-carousel">
             <div class="single_product_img">
-              <img src="./public/assets/img/products/producto<?= $producto->getId() ?>.png" alt="#" class="img-fluid">
+              <img src="./public/assets/img/products/product<?= $producto->getId() ?>/producto<?= $producto->getId() ?>-1.png" alt="#" class="img-fluid">
             </div>
             <div class="single_product_img">
-              <img src="./public/assets/img/products/producto<?= $producto->getId() ?>.png" alt="#" class="img-fluid">
+              <img src="./public/assets/img/products/product<?= $producto->getId() ?>/producto<?= $producto->getId() ?>-1.png" alt="#" class="img-fluid">
             </div>
             <div class="single_product_img">
-              <img src="./public/assets/img/products/producto<?= $producto->getId() ?>.png" alt="#" class="img-fluid">
+              <img src="./public/assets/img/products/product<?= $producto->getId() ?>/producto<?= $producto->getId() ?>-1.png" alt="#" class="img-fluid">
             </div>
           </div>
         </div>
@@ -47,7 +49,6 @@ require_once(HEADER_TEMPLATE);
             </p>
             <div class="card_area ">
               <div class="product_count_area ">
-
                 <p class="h3">$ <span id="precio"><?= $producto->getPrecio() ?></span></p>
                 <!--  <div class="product_count d-inline-block">
                   <span class="product_count_item inumber-decrement d-none" id="menos"> <i class="ti-minus"></i></span>
@@ -55,7 +56,6 @@ require_once(HEADER_TEMPLATE);
                   <span class="product_count_item number-increment" id="mas"> <i class="ti-plus"></i></span>
                 </div>
                 <p>Quantity</p> -->
-
               </div>
               <div class="add_to_cart text-center">
                 <a href="#" class="btn_3">add to cart</a>
@@ -68,9 +68,9 @@ require_once(HEADER_TEMPLATE);
   </div>
 
   <div class=" contenedor mx-3 px-3 mb-5">
-    <h1 class="titulo"> Dejenos su comentario</h1>
+    <h1 class="titulo">Leave your comment</h1>
 
-    <form action="./index.php?controller=productos&action=mostrarProducto&productoID=<?= $idProducto ?>" id="formulario" method="post">
+    <form action="#" id="formulario" method="post">
       <div class="form-group">
         <input type="text" name="in_comentario" class="form-control" id="exampleFormControlInput1" placeholder="Coloque su comentario aca" required>
       </div>
@@ -82,20 +82,19 @@ require_once(HEADER_TEMPLATE);
   </div>
 
   <div class=" contenedor mx-3 px-3 mb-5 mt-5">
-    <h1 class="titulo ">Comentarios</h1>
+    <h1 class="titulo "><?= count($comentarios) > 0 ? "Comments" : "No comments" ?></h1>
 
     <?php
-    foreach ($comentarios as $com) {
+    foreach (array_reverse($comentarios) as $com) {
     ?>
 
-      <div style='border: 2px grey solid;'>
-        <div style=" margin: 15px;">
-
-          <div><?= $com->getIdUsuario() ?></div>
-          <div style="margin: 15px;"><?= $com->getComentario() ?></div>
+      <div style='border: 1px grey solid; ' class="mt-3">
+        <div class='m-3'>
+          <div><?= UsuariosDAO::buscarUsuarioPorId($com->getIdUsuario())->getUsuario(); ?></div>
+          <div class="comentario"><?= $com->getComentario() ?></div>
 
           <div class="text-right">
-            <?=$com->getFechaDePublicacion()?>
+            <?= $com->getFechaDePublicacion() ?>
           </div>
         </div>
 

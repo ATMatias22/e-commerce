@@ -13,7 +13,7 @@ function call($controller, $action)
 $controllers = array(
   'home' => ['inicio','login','about','cart','contact','register', 'checkout','cerrar_sesion'],
   "usuarios" => ["login", "registrar"],
-  "productos" => ["shop","productosNuevos", "productosOrdenadosPorPrecio","productosPopulares","mostrarProducto"]
+  "productos" => ["shop","productosNuevos", "productosOrdenadosPorPrecio","productosPopulares","mostrarProducto", "buscarProductoPorNombre"]
 );
 
 if (array_key_exists($controller, $controllers)) {

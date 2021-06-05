@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Watch shop | eCommers</title>
+  <title>Watch shop | <?= $nombreSeccion ?></title>
   <meta name="description" content="">
   <meta name=".port" content="width=device-width, initial-scale=1">
   <link rel="manifest" href="site.webmanifest">
@@ -22,10 +22,28 @@
   <link rel="stylesheet" href="./public/assets/css/slick.css">
   <link rel="stylesheet" href="./public/assets/css/nice-select.css">
   <link rel="stylesheet" href="./public/assets/css/style.css">
+  <link rel="stylesheet" href="./public/assets/css/style-propios.css">
 
 </head>
 
 <body>
+
+  <!--? Search model Begin -->
+  <div class="search-model-box">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+      <div class="search-close-btn">+</div>
+      <form class="search-model-form" method="GET" action="./index.php?controller=productos&action=buscarProductoPorNombre">
+        <input type="text" id="search-input" name='searchProduct' placeholder="Searching Product.....">
+        <!-- <input type="text" name="searchProduct" id="">
+        <input type="submit" name="enviado" id="" value="valor"> -->
+      </form>
+    </div>
+  </div>
+  
+
+  <!-- Search model end -->
+
+
   <!--? Preloader Start -->
   <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -55,14 +73,6 @@
                   <li><a href="./index.php">Home</a></li>
                   <li><a href="./index.php?controller=productos&action=shop">shop</a></li>
                   <li><a href="./index.php?controller=home&action=about">about</a></li>
-                  <li><a href=" #">Pages</a>
-                    <ul class="submenu">
-                      <li><a href="./index.php?controller=home&action=login">Login</a></li>
-                      <li><a href="./index.php?controller=home&action=cart">Cart</a></li>
-                      <li><a href=" ./index.php?controller=home&action=confirmation">Confirmation</a></li>
-                      <li><a href="./index.php?controller=home&action=checkout">Product Checkout</a></li>
-                    </ul>
-                  </li>
                   <li><a href=" ./index.php?controller=home&action=contact">Contact</a></li>
                 </ul>
               </nav>
