@@ -20,8 +20,10 @@ if (array_key_exists($controller, $controllers)) {
   if (in_array($action, $controllers[$controller])) {
     call($controller, $action);
   } else {
-    call('viewError', 'errorRuta');
+    $mensaje = "La ruta es inhexistente";
+    require_once("view/error.php");
   }
 } else {
-  call('viewError', 'errorRuta');
+  $mensaje = "La ruta es inhexistente";
+  require_once("view/error.php");
 }

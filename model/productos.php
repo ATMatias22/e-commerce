@@ -1,10 +1,10 @@
 <?php
 
-
+require_once('./conexion.php');
 class productosDAO
 {
-  public static $FILE = "./json/productos.json";
-  
+
+
   /*FUNCION PARA PODER ORDENAR DE MANERA DESCENDENTE O ASCENDENTE POR ATRIBUTO ELEGIDO*/
   public static function array_sort_by(&$arrIni, $order = SORT_ASC)
   {
@@ -18,111 +18,75 @@ class productosDAO
 
   public static function all()
   {
-
-    $content = file_get_contents(productosDAO::$FILE);
-
-    $arr_productos = json_decode($content, true);
-    $arr_productosNuevos = [];
-
-    foreach ($arr_productos as $prod) {
-      $ObjetoProducto = new Producto($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
-      array_push($arr_productosNuevos, $ObjetoProducto);
-
-    }
-
-    return $arr_productosNuevos;
+    Conexion::conectar();
+    Conexion::preparar('select * from Producto');
+    Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Producto", ['id', 'nombre', 'precio', 'descripcion', 'nuevo', 'popular']);
+    Conexion::statement()->execute();
+    $arrayProductos = Conexion::statement()->fetchAll();
+    Conexion::desconectar();
+    return $arrayProductos;
   }
 
 
   public static function  productosNuevos()
   {
-
-    $content = file_get_contents(productosDAO::$FILE);
-
-    $arr_productos = json_decode($content, true);
-    /*array de Objetos Producto*/$arr_productosNuevos = [];
-
-    foreach ($arr_productos as $prod) {
-      if ($prod['nuevo'] === 1) {
-        $ObjetoProducto = new Producto($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
-        array_push($arr_productosNuevos, $ObjetoProducto);
-      }
-    }
-
-    return $arr_productosNuevos;
+    Conexion::conectar();
+    Conexion::preparar('select * from Producto where nuevo=1');
+    Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Producto", ['id', 'nombre', 'precio', 'descripcion', 'nuevo', 'popular']);
+    Conexion::statement()->execute();
+    $arrayProductos = Conexion::statement()->fetchAll();
+    Conexion::desconectar();
+    return $arrayProductos;
   }
 
 
   public static function  productosOrdenadosPorPrecio()
   {
-    $content = file_get_contents(productosDAO::$FILE);
-    $arr_productos = json_decode($content, true);
-    $arr_productosNuevos=[];
-    foreach ($arr_productos as $prod) {
-        $ObjetoProducto = new Producto($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
-        array_push($arr_productosNuevos, $ObjetoProducto);
-    }
-    self::array_sort_by($arr_productosNuevos, SORT_DESC);
-    return $arr_productosNuevos;
+    $arrayProductos = self::all();
+    self::array_sort_by($arrayProductos, SORT_DESC);
+    return $arrayProductos;
   }
 
   public static function  productosPopulares()
   {
+    Conexion::conectar();
+    Conexion::preparar('select * from Producto where popular=1');
+    Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Producto", ['id', 'nombre', 'precio', 'descripcion', 'nuevo', 'popular']);
+    Conexion::statement()->execute();
+    $arrayProductos = Conexion::statement()->fetchAll();
+    Conexion::desconectar();
+    return $arrayProductos;
 
-    $content = file_get_contents(productosDAO::$FILE);
-
-    $arr_productos = json_decode($content, true);
-    /*array de Objetos Producto*/
-    $arr_productosNuevos = [];
-
-    foreach ($arr_productos as $prod) {
-      if ($prod['popular'] === 1) {
-        $ObjetoProducto = new Producto($prod['id'], $prod['nombre'], $prod['precio'],$prod['descripcion'], $prod['nuevo'], $prod['popular']);
-        array_push($arr_productosNuevos, $ObjetoProducto);
-      }
-    }
-
-    return $arr_productosNuevos;
   }
 
 
   public static function  mostrarProducto($id)
   {
-
-    $content = file_get_contents(productosDAO::$FILE);
-    $arr_productos = json_decode($content, true);
-    $ObjetoProducto = null;
-    $i = 0;
-    while($i < sizeof($arr_productos) && $ObjetoProducto == null){
-      $aux = $arr_productos[$i];
-      if ($aux['id'] == $id) {
-        $ObjetoProducto = new Producto($aux['id'], $aux['nombre'], $aux['precio'], $aux['descripcion'], $aux['nuevo'], $aux['popular']);
-      }
-      $i++;
-    }
-    return $ObjetoProducto;
+    Conexion::conectar();
+    Conexion::preparar("SELECT * FROM Producto where id = :id");
+    Conexion::statement()->bindParam(':id', $id, PDO::PARAM_INT);
+    Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Producto", ['id', 'nombre', 'precio', 'descripcion', 'nuevo', 'popular']);
+    Conexion::statement()->execute();
+    $objetoProducto = Conexion::statement()->fetch();
+    Conexion::desconectar();
+    return $objetoProducto;
   }
 
-  public static function buscarProductoPorNombre($nombre){
-    $content = file_get_contents(productosDAO::$FILE);
-    $arr_productos = json_decode($content, true);
-    $ObjetoProducto = null;
-    $i = 0;
-    while ($i < sizeof($arr_productos) && $ObjetoProducto == null) {
-      $aux = $arr_productos[$i];
-      if ($aux['nombre'] == $nombre) {
-        $ObjetoProducto = new Producto($aux['id'], $aux['nombre'], $aux['precio'], $aux['descripcion'], $aux['nuevo'], $aux['popular']);
-      }
-      $i++;
-    }
-
-    
-    return $ObjetoProducto;
+  public static function buscarProductoPorNombre($nombre)
+  {
+    Conexion::conectar();
+    Conexion::preparar("SELECT * FROM Producto where nombre = :nombre");
+    Conexion::statement()->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+    Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Producto", ['id', 'nombre', 'precio', 'descripcion', 'nuevo', 'popular']);
+    Conexion::statement()->execute();
+    $objetoProducto = Conexion::statement()->fetch();
+    Conexion::desconectar();
+    return $objetoProducto;
   }
-
 }
 
-class Producto{
+class Producto
+{
   private $id;
   private $nombre;
   private $precio;
@@ -165,6 +129,4 @@ class Producto{
   {
     return $this->descripcion;
   }
-
-
 }

@@ -36,7 +36,6 @@ class  productos
 
   private function estaProductoLleno($producto, $idProducto)
   {
-    $comentarios = ComentarioDAO::mostrarComentariosParaCadaProducto($idProducto);
     //ESTO FUNCIONA SI ALGUIEN COMENTA ALGO SOBRE EL PRODUCTO
     //VERIFICAMOS SI SE ENVIO EL COMENTARIO
     if (isset($_POST['in_enviar_comentario'])) {
@@ -53,17 +52,11 @@ class  productos
         require_once("view/modal/modal_sesion_inactiva.php");
       }
     } else {
+      $comentarios = ComentarioDAO::mostrarComentariosParaCadaProducto($idProducto);
       require_once("view/product_details.php");
     }
   }
 
-
-  private function estaEncontrado($producto, $idProducto)
-  {
-   
-  }
-
-  
   public function mostrarProducto()
   {
     $idProducto = (int) $_GET['productoID'];
@@ -77,6 +70,11 @@ class  productos
       $this->estaProductoLleno($producto, $idProducto);
     }
   }
+/* 
+  private function estaEncontrado($producto, $idProducto)
+  {
+   
+  }
 
   public function buscarProductoPorNombre()
   {
@@ -88,5 +86,6 @@ class  productos
     }
     $idProducto = $producto->getId();
     $this->estaEncontrado($producto, $idProducto);
-  }
+   
+  } */
 }

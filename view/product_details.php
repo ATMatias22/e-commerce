@@ -4,9 +4,7 @@ $nombreSeccion = "Product Details";
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
 
-
 ?>
-
 
 <main>
   <!-- Hero Area Start-->
@@ -74,10 +72,7 @@ require_once(HEADER_TEMPLATE);
       <div class="form-group">
         <input type="text" name="in_comentario" class="form-control" id="exampleFormControlInput1" placeholder="Coloque su comentario aca" required>
       </div>
-
       <input type="submit" class="btn btn-lg btn-block boton" name="in_enviar_comentario" value="Enviar">
-
-
     </form>
   </div>
 
@@ -86,15 +81,14 @@ require_once(HEADER_TEMPLATE);
 
     <?php
     foreach (array_reverse($comentarios) as $com) {
-    ?>
 
+    ?>
       <div style='border: 1px grey solid; ' class="mt-3">
         <div class='m-3'>
-          <div><?= UsuariosDAO::buscarUsuarioPorId($com->getIdUsuario())->getUsuario(); ?></div>
+          <div><?= UsuariosDAO::buscarUsuarioPorId($com->getIdUsuario()); ?></div>
           <div class="comentario"><?= $com->getComentario() ?></div>
-
           <div class="text-right">
-            <?= $com->getFechaDePublicacion() ?>
+            <?= date("d-m-Y h:i",strtotime($com->getFechaDePublicacion())) ?>
           </div>
         </div>
 

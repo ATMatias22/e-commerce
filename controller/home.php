@@ -7,6 +7,7 @@ class home
 {
   function inicio()
   {
+
     $array_prod = productosDAO::productosNuevos();
     require_once("view/home.php");
 
@@ -29,8 +30,6 @@ class home
   {
     require_once("view/checkout.php");
   }
-
-
 
   function login()
   {

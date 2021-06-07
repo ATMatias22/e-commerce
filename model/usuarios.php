@@ -1,116 +1,90 @@
  <?php
 
+  require_once('./conexion.php');
+
   class UsuariosDAO
   {
-    public static $FILE = "./json/usuarios.json";
-
-    private static function generarID()
-    {
-      $content = file_get_contents(UsuariosDAO::$FILE);
-      $arr_usuarios = json_decode($content, true);
-      return count($arr_usuarios) + 1;
-    }
-
 
     public static function usuarioOcupado($usuario)
     {
+      Conexion::conectar();
+      Conexion::preparar('select * from Usuario where user=:user');
+      Conexion::statement()->bindParam(':user', $usuario, PDO::PARAM_STR);
+      Conexion::statement()->execute();
+      $resultado = Conexion::statement()->rowCount();
+      Conexion::desconectar();
+      return $resultado > 0 ? true : false;
 
-      $content = file_get_contents(UsuariosDAO::$FILE);
-
-      $arr_usuarios = json_decode($content, true);
-
-      $return = false;
-      foreach ($arr_usuarios as $cred) {
-
-        if ($cred["user"] == $usuario) {
-          $return = true;
-          break;
-        }
-      }
-
-      return $return;
     }
 
     public static function existeUsuario($usuario, $pwd)
     {
-
-      $content = file_get_contents(UsuariosDAO::$FILE);
-
-      $arr_usuarios = json_decode($content, true);
-
-      $return = false;
-      foreach ($arr_usuarios as $cred) {
-
-        if ($cred["user"] == $usuario && $cred["pwd"] == $pwd) {
-          $return = true;
-          break;
-        }
-      }
-
-      return $return;
+      Conexion::conectar();
+      Conexion::preparar('SELECT * FROM Usuario where user=:user AND password=:password');
+      Conexion::statement()->bindParam(':user', $usuario, PDO::PARAM_STR);
+      Conexion::statement()->bindParam(':password', $pwd, PDO::PARAM_STR);
+      Conexion::statement()->execute();
+      $resultado = Conexion::statement()->rowCount();
+      Conexion::desconectar();
+      return $resultado > 0 ? true : false;
     }
 
     public static function crearUsuario($usuario, $pwd)
     {
-      $content = file_get_contents(UsuariosDAO::$FILE);
-      $arr_usuarios = json_decode($content, true);
-      $id = self::generarID();
-      $user = array(
-        "id" => $id,
-        "user" => $usuario,
-        "pwd" => $pwd
-      );
-      array_push($arr_usuarios, $user);
-      $jsondata = json_encode($arr_usuarios, JSON_PRETTY_PRINT);
-      file_put_contents(UsuariosDAO::$FILE, $jsondata);
+      Conexion::conectar();
+      Conexion::preparar("INSERT INTO Usuario (user,password) VALUES (:user,:password)");
+      Conexion::statement()->bindParam(':user', $usuario, PDO::PARAM_STR);
+      Conexion::statement()->bindParam(':password', $pwd, PDO::PARAM_STR);
+      Conexion::statement()->execute();
+      Conexion::desconectar();
     }
 
 
     public static function buscarUsuarioPorId($id)
     {
-      $content = file_get_contents(UsuariosDAO::$FILE);
-      $arr_usuarios = json_decode($content, true);
-      $i = 0;
-      $objetoUsuario = null;
-      while ($i < sizeof($arr_usuarios) && is_null($objetoUsuario)) {
-        $idUser = $arr_usuarios[$i]["id"];
-        $user = $arr_usuarios[$i]["user"];
-        $password = $arr_usuarios[$i]["pwd"];
-        if ($idUser == $id) {
-          $objetoUsuario = new Usuario($idUser,$user,$password);
-        }
-        $i++;
-      }
-      return $objetoUsuario;
+
+      Conexion::conectar();
+      Conexion::preparar("SELECT * FROM Usuario where id = :id");
+      Conexion::statement()->bindParam(':id', $id, PDO::PARAM_INT);
+      Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Usuario", ['id', 'user', 'password']);
+      Conexion::statement()->execute();
+      $objetoUsuario = Conexion::statement()->fetch();
+      Conexion::desconectar();
+     /*  $idEncontrado = $objetoUsuario['id'];
+      $user = $objetoUsuario['user'];
+      $password = $objetoUsuario['password'];
+      $objetoUsuario = new Usuario($idEncontrado, $user, $password); */
+
+      return $objetoUsuario->getUser();
     }
 
-    public static function buscarIdDelUsuarioPorNombre($nombre)
+    public static function buscarIdDelUsuarioPorNombre($user)
     {
-      $content = file_get_contents(UsuariosDAO::$FILE);
-      $arr_usuarios = json_decode($content, true);
-      $i = 0;
-      $idUsuario = null;
-      while ($i < sizeof($arr_usuarios) && is_null($idUsuario)) {
-        if ($arr_usuarios[$i]["user"] == $nombre) {
-          $idUsuario = $arr_usuarios[$i]["id"];
-        }
-        $i++;
-      }
-      return $idUsuario;
+
+      Conexion::conectar();
+      Conexion::preparar("SELECT * FROM Usuario where user =:user");
+      Conexion::statement()->bindParam(':user', $user, PDO::PARAM_INT);
+      Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Usuario", ['id', 'user', 'password']);
+      Conexion::statement()->execute();
+      $objetoUsuario = Conexion::statement()->fetch();
+      Conexion::desconectar();
+      return intval($objetoUsuario['id']);
+
     }
   }
 
 
-  class Usuario{
+  class Usuario
+  {
 
     private $id;
-    private $usuario;
+    private $user;
     private $password;
 
-    function __construct($id, $usuario, $password)
+    function __construct($id, $user, $password)
     {
       $this->$id = $id;
-      $this->usuario = $usuario;
+      $this->user = $user;
       $this->password = $password;
     }
 
@@ -118,9 +92,9 @@
     {
       return $this->id;
     }
-    public function getUsuario()
+    public function getUser()
     {
-      return $this->usuario;
+      return $this->user;
     }
     public function getPassword()
     {

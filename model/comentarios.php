@@ -1,85 +1,69 @@
 <?php
+require_once('./conexion.php');
 
 class ComentarioDAO
 {
-  public static $FILE_COMENTARIOS = "./json/comentarios.json";
- 
-
-
-  private static function generarID()
-  {
-    $content = file_get_contents(self::$FILE_COMENTARIOS);
-    $arr_usuarios = json_decode($content, true);
-    return count($arr_usuarios) + 1;
-  }
 
   public static function crearComentario($idProducto, $idUsuario, $comentario)
   {
+
     date_default_timezone_set('America/Argentina/Buenos_Aires'); // seteo hora local
-    $content = file_get_contents(self::$FILE_COMENTARIOS);
-    $arr_usuarios = json_decode($content, true);
-    $idComentario = self::generarID();
-    $fechaDePublicacion =  date('d-m-Y H:i:s');
-    $user = array(
-      "id_comentario" => $idComentario,
-      "id_producto" => $idProducto,
-      "id_usuario" => $idUsuario,
-      "comentario" => $comentario,
-      "fecha_publicacion" => $fechaDePublicacion
-    );
-    array_push($arr_usuarios, $user);
-    $jsondata = json_encode($arr_usuarios, JSON_PRETTY_PRINT);
-    file_put_contents(self::$FILE_COMENTARIOS, $jsondata);
+    $fechaDePublicacion =  date('Y-m-d H:i:s');
+    Conexion::conectar();
+    Conexion::preparar("INSERT INTO Comentario (id_producto,id_usuario,comentario,fecha_publicacion) VALUES (:id_producto,:id_usuario,:comentario,:fecha_publicacion)");
+    Conexion::statement()->bindParam(':id_producto', $idProducto, PDO::PARAM_INT);
+    Conexion::statement()->bindParam(':id_usuario', $idUsuario, PDO::PARAM_INT);
+    Conexion::statement()->bindParam(':comentario', $comentario, PDO::PARAM_STR);
+    Conexion::statement()->bindParam(':fecha_publicacion', $fechaDePublicacion);
+    Conexion::statement()->execute();
+    Conexion::desconectar();
   }
 
-  public static function mostrarComentariosParaCadaProducto($id){
-
-    $content = file_get_contents(self::$FILE_COMENTARIOS);
-    $arr_comentarios = json_decode($content, true);
-    /*array de Objetos Comentario*/
-    $arr_comentariosNuevos = [];
-    foreach ($arr_comentarios as $com) {
-      if ($com['id_producto'] == $id) {
-        $objetoComentario = new Comentario($com['id_comentario'],$com['id_producto'],$com['id_usuario'],$com['comentario'],$com['fecha_publicacion']);
-        array_push($arr_comentariosNuevos, $objetoComentario);
-      }
-    }
-    return $arr_comentariosNuevos;
-
+  public static function mostrarComentariosParaCadaProducto($id)
+  {
+    Conexion::conectar();
+    Conexion::preparar("SELECT * from Comentario where id_producto = :id");
+    Conexion::statement()->bindParam(':id', $id, PDO::PARAM_INT);
+    Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Comentario", ['id', 'id_producto', 'id_usuario', 'comentario', 'fecha_publicacion']);
+    Conexion::statement()->execute();
+    $array = Conexion::statement()->fetchAll();
+    Conexion::desconectar();
+    return $array;
   }
 }
 
 
-class Comentario{
+class Comentario
+{
 
-  private $idComentario;
-  private $idProducto;
-  private $idUsuario;
+  private $id;
+  private $id_producto;
+  private $id_usuario;
   private $comentario;
-  private $fechaDePublicacion;
+  private $fecha_publicacion;
 
 
-  public function __construct($idComentario, $idProducto, $idUsuario, $comentario, $fechaDePublicacion)
+  public function __construct($id, $id_producto, $id_usuario, $comentario, $fecha_publicacion)
   {
-    $this->idComentario = $idComentario;
-    $this->idProducto = $idProducto;
-    $this->idUsuario = $idUsuario;
+    $this->id = $id;
+    $this->id_producto = $id_producto;
+    $this->id_usuario = $id_usuario;
     $this->comentario = $comentario;
-    $this->fechaDePublicacion = $fechaDePublicacion;
+    $this->fecha_publicacion = $fecha_publicacion;
   }
 
 
-  public function getIdComentario()
+  public function getId()
   {
-    return $this->idComentario;
+    return $this->id;
   }
   public function getIdProducto()
   {
-    return $this->idProducto;
+    return $this->id_producto;
   }
   public function getIdUsuario()
   {
-    return $this->idUsuario;
+    return $this->id_usuario;
   }
   public function getComentario()
   {
@@ -88,7 +72,6 @@ class Comentario{
 
   public function getFechaDePublicacion()
   {
-    return $this->fechaDePublicacion;
+    return $this->fecha_publicacion;
   }
-
 }
