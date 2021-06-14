@@ -24,7 +24,7 @@ require_once(HEADER_TEMPLATE);
   <div class="about-details section-padding30">
     <div class="container">
       <div class="row">
-        <div class="offset-xl-1 col-lg-8">
+        <div class="offset-xl-1 col-lg-8 mx-auto">
           <div class="about-details-cap mb-50">
             <h4>Our Mission</h4>
             <p>Consectetur adipiscing elit, sued do eiusmod tempor ididunt udfgt labore et dolore magna aliqua. Quis ipsum suspendisces gravida. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus. Risus commodo viverra sebfd dho eiusmod tempor maecenas accumsan lacus.
@@ -42,29 +42,11 @@ require_once(HEADER_TEMPLATE);
       </div>
     </div>
   </div>
-  <!-- About Details End -->
-  <!--? Video Area Start -->
-  <div class="video-area mb-100">
-    <div class="container-fluid">
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <div class="video-wrap">
-            <div class="play-btn "><a class="popup-video" href="https://www.youtube.com/watch?v=KMc6DyEJp04"><i class="fas fa-play"></i></a></div>
-          </div>
-        </div>
-      </div>
-      <!-- Arrow -->
-      <div class="thumb-content-box">
-        <div class="thumb-content">
-          <h3>Next Video</h3>
-          <a href="#"> <i class="flaticon-arrow"></i></a>
-        </div>
-      </div>
-    </div>
+  <div class="col-lg-8 col-md-10 col-sm-11 mx-auto mb-5">
+    <video class="popup-video" width="100%" controls src="./public/assets/video/video.mp4"><i class="fas fa-play"></i></video>
   </div>
-  <!-- Video Area End -->
-  <!--? Shop Method Start-->
-  <div class="shop-method-area">
+
+  <div class="shop-method-area mb-4">
     <div class="container">
       <div class="method-wrapper">
         <div class="row d-flex justify-content-between">

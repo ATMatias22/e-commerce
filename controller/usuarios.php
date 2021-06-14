@@ -13,7 +13,7 @@ class usuarios
       if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         if (UsuariosDAO::existeUsuario($_POST["username"], $_POST["password"])) {
           $_SESSION["username"] = $_POST["username"];
-          $_SESSION["id"] = UsuariosDAO::buscarIdDelUsuarioPorNombre($_SESSION["username"]);
+          $_SESSION["id"] = UsuariosDAO::buscarIdDelUsuarioPorNombre($_POST["username"], $_POST['password']);
           header("Location: ./index.php?controller=home&action=inicio");
         } else {
           $_SESSION["msg"] = "El usuario no existe";
@@ -39,7 +39,7 @@ class usuarios
         if (!UsuariosDAO::usuarioOcupado($_POST["username"])) {
           UsuariosDAO::crearUsuario($_POST["username"], $_POST["password"]);
           $_SESSION["username"] = $_POST["username"];
-          $_SESSION["id"] = UsuariosDAO::buscarIdDelUsuarioPorNombre($_SESSION["username"]);
+          $_SESSION["id"] = UsuariosDAO::buscarIdDelUsuarioPorNombre($_POST["username"], $_POST['password']);
           header("Location: ./index.php?controller=home&action=inicio");
         } else {
           $_SESSION["msg"] = "El usuario ya existe";
@@ -54,4 +54,6 @@ class usuarios
       require_once("view/login.php");
     }
   }
+
+
 }

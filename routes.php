@@ -11,9 +11,10 @@ function call($controller, $action)
 
 // Aca se configuran los controlares y actions disponibles
 $controllers = array(
-  'home' => ['inicio','login','about','cart','contact','register', 'checkout','cerrar_sesion'],
+  'home' => ['inicio','login','about','cart','contact','register', 'checkout','cerrar_sesion','enviarMail'],
   "usuarios" => ["login", "registrar"],
-  "productos" => ["shop","productosNuevos", "productosOrdenadosPorPrecio","productosPopulares","mostrarProducto", "buscarProductoPorNombre"]
+  "productos" => ["shop","productosNuevos", "productosOrdenadosPorPrecio","productosPopulares","mostrarProducto", "buscarProductoPorNombre"],
+  "suscripcion" => ["suscribir"]
 );
 
 if (array_key_exists($controller, $controllers)) {

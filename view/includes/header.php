@@ -39,7 +39,7 @@
       </form>
     </div>
   </div>
-  
+
 
   <!-- Search model end -->
 
@@ -85,7 +85,13 @@
                     <span class="flaticon-search"></span>
                   </div>
                 </li>
-                <li><a href="./index.php?controller=home&action=cart"><span class="flaticon-shopping-cart"></span></a> </li>
+                <li>
+                  <a href="./index.php?controller=home&action=cart">
+                    <span class="flaticon-shopping-cart ">
+                      <span class="cantidad-productos-carritos" id="cantidad-productos-carritos"></span>
+                    </span>
+                  </a>
+                </li>
                 <li> <a href="./index.php?controller=home&action=login"><span class="flaticon-user" <?php if (isset($_SESSION['username'])) {
                                                                                                       echo "style='color:red'";
                                                                                                     } ?>>
@@ -102,7 +108,7 @@
             </div>
           </div>
           <!-- Mobile Menu -->
-          <div class="col-12">
+          <div class="col-12 position-static">
             <div class="mobile_menu d-block d-lg-none"></div>
           </div>
         </div>

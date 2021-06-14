@@ -44,15 +44,17 @@ require_once(HEADER_TEMPLATE);
         </div>
         <!-- Select items -->
         <div class="select-this">
-          <form action="#">
+          <form action="#" method="get" id="formPaginado">
             <div class="select-itms">
               <select name="select" id="select1">
-                <option value="">40 per page</option>
-                <option value="">50 per page</option>
-                <option value="">60 per page</option>
-                <option value="">70 per page</option>
+                <option value="a">40 per page</option>
+                <option value="b">50 per page</option>
+                <option value="c">60 per page</option>
+                <option value="d">70 per page</option>
               </select>
             </div>
+            <!-- 
+            <input class="d-none" type='submit' id='buttonSubmit' value='btton'> -->
           </form>
         </div>
       </div>
@@ -73,16 +75,22 @@ require_once(HEADER_TEMPLATE);
               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                 <div class="single-popular-items mb-50 text-center">
                   <div class="popular-img">
-                    <img src="./public/assets/img/products/product<?=$id?>/producto<?= $id ?>-1.png" alt="">
+                    <img src="<?= productos::RUTA_IMGS . $id ?>/product<?= $id ?>-1.png" alt="">
                     <div class="img-cap">
-                      <span>Add to cart</span>
+                      <form action="" class="carrito">
+                        <input type="text" class="d-none" name="id-producto" value=<?= $id ?>>
+                        <span class="enviarIDProducto" id='producto<?= $id ?>' type="submit">Add to cart</span>
+                      </form>
                     </div>
-                    <div class="favorit-items">
-                      <span class="flaticon-heart"></span>
+                    <div class="favorit-items" style="opacity: 1 !important;">
+                      <svg id='like<?= $id ?>' xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                      </svg>
                     </div>
                   </div>
                   <div class="popular-caption">
-                    <h3><a href="./index.php?controller=productos&action=mostrarProducto&productoID=<?=$id?>"><?= $nombre ?></a></h3>
+                    <h3><a href="./index.php?controller=productos&action=mostrarProducto&productoID=<?= $id ?>"><?= $nombre ?></a></h3>
                     <span class="text-danger">$<?= $precio ?></span>
                   </div>
                 </div>
@@ -101,7 +109,7 @@ require_once(HEADER_TEMPLATE);
   </section>
   <!-- Latest Products End -->
   <!--? Shop Method Start-->
-  <div class="shop-method-area">
+  <div class="shop-method-area mb-4">
     <div class="container">
       <div class="method-wrapper">
         <div class="row d-flex justify-content-between">

@@ -1,4 +1,27 @@
 <footer>
+
+  <!--================End Single Product Area =================-->
+  <!-- subscribe part here -->
+  <section class="subscribe_part section_padding">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="subscribe_part_content">
+            <h2>Get promotions & updates!</h2>
+            <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
+            <form action="#" method="POST">
+              <div class="subscribe_form d-flex">
+                <input type="email" name="suscripcion" class="pr-120" placeholder="Enter your mail">
+                <button type="submit" name="suscripcionEnviar" class="btn_1  position-absolute  ">Subscribe
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- subscribe part end -->
+
   <!-- Footer Start-->
   <div class="footer-area footer-padding">
     <div class="container">
@@ -126,7 +149,7 @@
 
 
 
-<script src="./public/assets/js/script.js"></script>
+<script type="module" src="./public/assets/js/propio/script.js"></script>
 
 
 <script src="https://kit.fontawesome.com/8e2b26cfcc.js" crossorigin="anonymous"></script>

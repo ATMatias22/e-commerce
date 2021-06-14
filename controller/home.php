@@ -5,9 +5,12 @@ require_once("model/productos.php");
 
 class home
 {
+  public const RUTA_IMGS = "./public/assets/img/products/product";
+
+
   function inicio()
   {
-
+   
     $array_prod = productosDAO::productosNuevos();
     require_once("view/home.php");
 
@@ -48,6 +51,12 @@ class home
     } else {
       require_once("view/register.php");
     }
+  }
+
+  function enviarMail(){
+
+    require_once('view/extras/contact_process.php');
+
   }
 
 

@@ -58,19 +58,24 @@
       return $objetoUsuario->getUser();
     }
 
-    public static function buscarIdDelUsuarioPorNombre($user)
+    public static function buscarIdDelUsuarioPorNombre($user,$password)
     {
 
       Conexion::conectar();
-      Conexion::preparar("SELECT * FROM Usuario where user =:user");
-      Conexion::statement()->bindParam(':user', $user, PDO::PARAM_INT);
+      Conexion::preparar('SELECT * FROM Usuario where user = :user and password = :password');
+      Conexion::statement()->bindParam(':user', $user, PDO::PARAM_STR);
+      Conexion::statement()->bindParam(':password', $password, PDO::PARAM_STR);
       Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Usuario", ['id', 'user', 'password']);
       Conexion::statement()->execute();
       $objetoUsuario = Conexion::statement()->fetch();
       Conexion::desconectar();
-      return intval($objetoUsuario['id']);
+    
+      return intval($objetoUsuario->getId());
 
     }
+
+
+
   }
 
 

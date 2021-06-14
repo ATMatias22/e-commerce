@@ -9,6 +9,7 @@ require_once(HEADER_TEMPLATE);
 ?>
 
 <main>
+
   <!--? slider Area Start -->
   <div class="slider-area ">
     <div class="slider-active">
@@ -64,9 +65,10 @@ require_once(HEADER_TEMPLATE);
   </div>
   <!-- slider Area End-->
   <!-- ? New Product Start -->
-  <section class="new-product-area section-padding30">
+
+
+  <section class="popular-items latest-padding">
     <div class="container">
-      <!-- Section tittle -->
       <div class="row">
         <div class="col-xl-12">
           <div class="section-tittle mb-70">
@@ -74,35 +76,53 @@ require_once(HEADER_TEMPLATE);
           </div>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <!-- Nav Card -->
+      <div class="tab-content" id="nav-tabContent">
+        <!-- card one -->
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="row justify-content-center">
+            <?php
+            foreach ($array_prod as $prod) {
+              $id = $prod->getId();
+              $precio = $prod->getPrecio();
+              $nombre = $prod->getNombre();
+            ?>
 
-        <?php
-
-        foreach ($array_prod as $prod) {
-          $id = $prod->getId();
-          $precio = $prod->getPrecio();
-          $nombre = $prod->getNombre();
-
-        ?>
-          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-            <div class="single-new-pro mb-30 text-center">
-              <div class="product-img">
-                <img src="./public/assets/img/products/product<?=$id?>/producto<?= $id ?>-1.png" alt="">
+              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div class="single-popular-items mb-50 text-center">
+                  <div class="popular-img">
+                    <img src="<?= home::RUTA_IMGS . $id ?>/product<?= $id ?>-1.png" alt="">
+                    <div class="img-cap">
+                      <form action="" class="carrito">
+                        <input type="text" class="d-none" name="id-producto" value=<?= $id ?>>
+                        <span class="enviarIDProducto" id='producto<?= $id ?>' >Add to cart</span>
+                      </form>
+                    </div>
+                    <div class="favorit-items" style="opacity: 1 !important;">
+                      <svg id='like<?=$id?>' xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="popular-caption">
+                    <h3><a href="./index.php?controller=productos&action=mostrarProducto&productoID=<?= $id ?>"><?= $nombre ?></a></h3>
+                    <span class="text-danger">$<?= $precio ?></span>
+                  </div>
+                </div>
               </div>
-              <div class="product-caption">
-                <h3><a href="./index.php?controller=productos&action=mostrarProducto&productoID=<?=$id?>"><?= $nombre ?></a></h3>
-                <span>$<?= $precio ?></span>
-              </div>
-            </div>
+            <?php
+            }
+            ?>
           </div>
-
-        <?php
-        }
-        ?>
-
+        </div>
       </div>
+      <!-- End Nav Card -->
     </div>
   </section>
+
+
+
   <!--  New Product End -->
   <!--? Gallery Area Start -->
   <div class="gallery-area">
@@ -143,7 +163,7 @@ require_once(HEADER_TEMPLATE);
 
   <!-- Watch Choice  End-->
   <!--? Shop Method Start-->
-  <div class="shop-method-area">
+  <div class="shop-method-area mb-4">
     <div class="container">
       <div class="method-wrapper">
         <div class="row d-flex justify-content-between">
