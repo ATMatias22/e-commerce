@@ -94,12 +94,14 @@ require_once(HEADER_TEMPLATE);
                     <img src="<?= home::RUTA_IMGS . $id ?>/product<?= $id ?>-1.png" alt="">
                     <div class="img-cap">
                       <form action="" class="carrito">
-                        <input type="text" class="d-none" name="id-producto" value=<?= $id ?>>
-                        <span class="enviarIDProducto" id='producto<?= $id ?>' >Add to cart</span>
+                        <input type="text" class="d-none" value=<?= $id ?>>
+                        <input type="text" class="d-none" value=<?= $nombre ?>>
+                        <input type="text" class="d-none" value=<?= $precio ?>>
+                        <span class="enviarIDProducto" id='producto<?= $id ?>'>Add to cart</span>
                       </form>
                     </div>
                     <div class="favorit-items" style="opacity: 1 !important;">
-                      <svg id='like<?=$id?>' xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg id='like<?= $id ?>' xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
                       </svg>

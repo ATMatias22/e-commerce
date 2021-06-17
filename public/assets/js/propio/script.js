@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", e => {
   //$elementoDondeSeColocaLaCantidadDeProductosEnCarrito esta en header.php
   const $elementoDondeSeColocaLaCantidadDeProductosEnCarrito = document.getElementById('cantidad-productos-carritos');
 
-  inicializaElCarritoAlCargarLaPagina($formulario, 1, $elementoDondeSeColocanLosProductos, $elementoDondeSeColocaLaCantidadDeProductosEnCarrito);
+  inicializaElCarritoAlCargarLaPagina($formulario, 3, $elementoDondeSeColocanLosProductos, $elementoDondeSeColocaLaCantidadDeProductosEnCarrito);
 
   document.addEventListener('click', e => {
     //cuando tocamos el boton del producto que añade o elimina del carrito

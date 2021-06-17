@@ -15,8 +15,10 @@ class suscripcion{
 
           if(!SuscripcionDAO::estaSuscripto($_POST['suscripcion'])){
             SuscripcionDAO::suscribirUsuario($_POST['suscripcion']);
+            call('home','inicio');
             require_once("view/modal/modal_suscripcion.php");
           }else{
+            call('home','inicio');
             require_once("view/modal/modal_suscripcion_error.php");
           }
         }

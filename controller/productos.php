@@ -56,25 +56,53 @@ class  productos
         require_once("view/modal/modal_sesion_inactiva.php");
       }
     } else {
-
       require_once("view/product_details.php");
     }
   }
 
   public function mostrarProducto()
   {
-    $idProducto = (int) $_GET['productoID'];
-    $producto = productosDAO::mostrarProducto($idProducto);
-
-
-    //ESTO VERIFICA QUE HAYAN PASADO UN ID DE PRODUCTO EXISTENTE
-    if ($producto == null) {
-      $mensaje = "El producto {$idProducto} no existe en nuestro sitio";
-      require_once("view/error.php");
+    if (isset($_GET['productoID'])) {
+      $idProducto = (int) $_GET['productoID'];
+      $producto = productosDAO::mostrarProducto($idProducto);
+      //ESTO VERIFICA QUE HAYAN PASADO UN ID DE PRODUCTO EXISTENTE
+      if ($producto == null) {
+        call('errores', 'errorProducto');
+         /* require_once('./index.php?controller=errores&action=errorProducto'); */
+        /*  header("Location: ./index.php?controller=errores&action=errorProducto&productoID={$idProducto}"); */
+      } else {
+        $this->mostrarProductoIndividual($producto, $idProducto);
+      }
     } else {
-      $this->mostrarProductoIndividual($producto, $idProducto);
+      call('errores', 'errorRuta');
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /* 
   private function estaEncontrado($producto, $idProducto)
   {

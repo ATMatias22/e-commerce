@@ -54,6 +54,4 @@ class usuarios
       require_once("view/login.php");
     }
   }
-
-
 }

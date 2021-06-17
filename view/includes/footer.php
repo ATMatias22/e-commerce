@@ -9,7 +9,7 @@
           <div class="subscribe_part_content">
             <h2>Get promotions & updates!</h2>
             <p>Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources credibly innovate granular internal .</p>
-            <form action="#" method="POST">
+            <form action="./index.php?controller=suscripcion&action=suscribir" method="POST">
               <div class="subscribe_form d-flex">
                 <input type="email" name="suscripcion" class="pr-120" placeholder="Enter your mail">
                 <button type="submit" name="suscripcionEnviar" class="btn_1  position-absolute  ">Subscribe

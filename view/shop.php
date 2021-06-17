@@ -78,7 +78,9 @@ require_once(HEADER_TEMPLATE);
                     <img src="<?= productos::RUTA_IMGS . $id ?>/product<?= $id ?>-1.png" alt="">
                     <div class="img-cap">
                       <form action="" class="carrito">
-                        <input type="text" class="d-none" name="id-producto" value=<?= $id ?>>
+                        <input type="text" class="d-none" value=<?= $id ?>>
+                        <input type="text" class="d-none" value=<?= $nombre ?>>
+                        <input type="text" class="d-none" value=<?= $precio ?>>
                         <span class="enviarIDProducto" id='producto<?= $id ?>' type="submit">Add to cart</span>
                       </form>
                     </div>

@@ -18,21 +18,15 @@ export function guardarCarrito(e, $elementoDondeSeColocaLaCantidadDeProductosEnC
       localStorage.setItem('productos', JSON.stringify([]));
     }
     //hacemos referencia al padre del elemento clickeado y luego obtenemos el hijo en la posicion colocada (el hijo debe ser el input que contiene el id del producto en su value)
-    const producto = e.target.parentElement[0].value;
-    if (!existeProductoEnCarrito(producto)) {
-      let formData = new FormData();
-      formData.append('id', producto);
+    const idProducto = e.target.parentElement[0].value;
+    const nombre = e.target.parentElement[1].value
+    const precio = e.target.parentElement[2].value
+    if (!existeProductoEnCarrito(idProducto)) {
+      let producto = ({ id: idProducto, nombre, precio });
+      agregarYActualizarDisenioAlAgregarAlCarrito(producto, $elementoDondeSeColocaLaCantidadDeProductosEnCarrito, e.target);
 
-      fetch('./model/carrito.php', {
-        method: 'post',
-        body: formData
-      }).then(data => {
-        return data.json();
-      }).then(data => {
-        agregarYActualizarDisenioAlAgregarAlCarrito(data, $elementoDondeSeColocaLaCantidadDeProductosEnCarrito, e.target);
-      })
     } else {
-      eliminarYActualizarDisenioAlQuitarDelCarrito($elementoDondeSeColocaLaCantidadDeProductosEnCarrito, producto, e.target);
+      eliminarYActualizarDisenioAlQuitarDelCarrito($elementoDondeSeColocaLaCantidadDeProductosEnCarrito, idProducto, e.target);
     }
   }
 }

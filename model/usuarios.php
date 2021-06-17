@@ -14,7 +14,6 @@
       $resultado = Conexion::statement()->rowCount();
       Conexion::desconectar();
       return $resultado > 0 ? true : false;
-
     }
 
     public static function existeUsuario($usuario, $pwd)

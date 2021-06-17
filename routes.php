@@ -14,17 +14,17 @@ $controllers = array(
   'home' => ['inicio','login','about','cart','contact','register', 'checkout','cerrar_sesion','enviarMail'],
   "usuarios" => ["login", "registrar"],
   "productos" => ["shop","productosNuevos", "productosOrdenadosPorPrecio","productosPopulares","mostrarProducto", "buscarProductoPorNombre"],
-  "suscripcion" => ["suscribir"]
+  "suscripcion" => ["suscribir"],
+  "errores" => ["errorRuta", "errorProducto"]
 );
 
 if (array_key_exists($controller, $controllers)) {
   if (in_array($action, $controllers[$controller])) {
     call($controller, $action);
-  } else {
-    $mensaje = "La ruta es inhexistente";
-    require_once("view/error.php");
-  }
+  }else{
+    call('errores', 'errorRuta');
+  } 
 } else {
-  $mensaje = "La ruta es inhexistente";
-  require_once("view/error.php");
+    call('errores','errorRuta');
+
 }
