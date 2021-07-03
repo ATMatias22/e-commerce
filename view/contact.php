@@ -1,4 +1,6 @@
 <?php
+//ESTA VARIABLE SIRVE PARA CAMBIAR EL TITLE AL HEADER, EL HEADER CONTIENE UNA VARIABLE $NOMRBESECCION EN LA ETIQUETA TITLE
+
 $nombreSeccion = "Contact";
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
@@ -37,7 +39,7 @@ require_once(HEADER_TEMPLATE);
           <h2 class="contact-title">Get in Touch</h2>
         </div>
         <div class="col-lg-8">
-          <form class="" action="./index.php?controller=home&action=enviarMail" method="post" id="" >
+          <form class="" action="./index.php?controller=contactos&action=contact" method="post" id="" >
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
@@ -61,7 +63,7 @@ require_once(HEADER_TEMPLATE);
               </div>
             </div>
             <div class="form-group mt-3">
-              <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+              <button type="submit" name="enviarContacto" class="button button-contactForm boxed-btn">Send</button>
             </div>
           </form>
         </div>

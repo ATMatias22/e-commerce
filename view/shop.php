@@ -1,4 +1,6 @@
 <?php
+//ESTA VARIABLE SIRVE PARA CAMBIAR EL TITLE AL HEADER, EL HEADER CONTIENE UNA VARIABLE $NOMRBESECCION EN LA ETIQUETA TITLE
+
 $nombreSeccion = "Shop";
 require_once("./view/constantes.php");
 require_once(HEADER_TEMPLATE);
@@ -29,12 +31,12 @@ require_once(HEADER_TEMPLATE);
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-              <a class="nav-item nav-link <?= $_GET['action'] == "shop" ? "active" : "" ?>" id="nav-home-tab" href="./index.php?controller=productos&action=shop" role="tab" aria-controls="nav-home" aria-selected="true">Todos los productos</a>
+              <a class="nav-item nav-link <?= $_GET['action'] == "shop" ? "active" : "" ?>" id="nav-home-tab" href="./index.php?controller=productos&action=shop" role="tab" aria-controls="nav-home" aria-selected="true">All products</a>
 
-              <a class="nav-item nav-link <?= $_GET['action'] == "productosNuevos" ? "active" : "" ?>" id="nav-home-tab" href="./index.php?controller=productos&action=productosNuevos" role="tab" aria-controls="nav-home" aria-selected="true">Nuevos</a>
+              <a class="nav-item nav-link <?= $_GET['action'] == "productosNuevos" ? "active" : "" ?>" id="nav-home-tab" href="./index.php?controller=productos&action=productosNuevos" role="tab" aria-controls="nav-home" aria-selected="true">New</a>
 
-              <a class="nav-item nav-link <?= $_GET['action'] == "productosOrdenadosPorPrecio" ? "active" : "" ?>" id="nav-profile-tab" href="./index.php?controller=productos&action=productosOrdenadosPorPrecio" role="tab" aria-controls="nav-profile" aria-selected="false"> Precio del mas alto al bajo</a>
-              <a class="nav-item nav-link <?= $_GET['action'] == "productosPopulares" ? "active" : "" ?>" id="nav-contact-tab" href="./index.php?controller=productos&action=productosPopulares" role="tab" aria-controls="nav-contact" aria-selected="false"> Más populares </a>
+              <a class="nav-item nav-link <?= $_GET['action'] == "productosOrdenadosPorPrecio" ? "active" : "" ?>" id="nav-profile-tab" href="./index.php?controller=productos&action=productosOrdenadosPorPrecio" role="tab" aria-controls="nav-profile" aria-selected="false">Price from highest to lowest</a>
+              <a class="nav-item nav-link <?= $_GET['action'] == "productosPopulares" ? "active" : "" ?>" id="nav-contact-tab" href="./index.php?controller=productos&action=productosPopulares" role="tab" aria-controls="nav-contact" aria-selected="false"> More popular </a>
             </div>
           </nav>
           <!--End Nav Button  -->
@@ -43,7 +45,7 @@ require_once(HEADER_TEMPLATE);
         <div class="grid-list-view">
         </div>
         <!-- Select items -->
-        <div class="select-this">
+        <!-- <div class="select-this">
           <form action="#" method="get" id="formPaginado">
             <div class="select-itms">
               <select name="select" id="select1">
@@ -53,10 +55,10 @@ require_once(HEADER_TEMPLATE);
                 <option value="d">70 per page</option>
               </select>
             </div>
-            <!-- 
-            <input class="d-none" type='submit' id='buttonSubmit' value='btton'> -->
+       
+            <input class="d-none" type='submit' id='buttonSubmit' value='btton'> 
           </form>
-        </div>
+        </div> -->
       </div>
       <!-- Nav Card -->
       <div class="tab-content" id="nav-tabContent">
@@ -79,7 +81,7 @@ require_once(HEADER_TEMPLATE);
                     <div class="img-cap">
                       <form action="" class="carrito">
                         <input type="text" class="d-none" value=<?= $id ?>>
-                        <input type="text" class="d-none" value=<?= $nombre ?>>
+                        <input type="text" class="d-none" value="<?= $nombre ?>">
                         <input type="text" class="d-none" value=<?= $precio ?>>
                         <span class="enviarIDProducto" id='producto<?= $id ?>' type="submit">Add to cart</span>
                       </form>

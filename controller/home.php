@@ -5,8 +5,8 @@ require_once("model/productos.php");
 
 class home
 {
+  //esta ruta es utilizada en las vistas que muestran los productos
   public const RUTA_IMGS = "./public/assets/img/products/product";
-
 
   function inicio()
   {
@@ -25,18 +25,9 @@ class home
     require_once("view/cart.php");
   }
 
-  function contact()
-  {
-    require_once("view/contact.php");
-  }
-  function checkout()
-  {
-    require_once("view/checkout.php");
-  }
-
   function login()
   {
-
+    //EN CASO DE EXISTIR SESION QUE ME MANDE AL INICIO
     if (isset($_SESSION['username'])) {
       $this->inicio();
     } else {
@@ -46,19 +37,13 @@ class home
 
   function register()
   {
+    //EN CASO DE EXISTIR SESION QUE ME MANDE AL INICIO
     if (isset($_SESSION['username'])) {
       $this->inicio();
     } else {
       require_once("view/register.php");
     }
   }
-
-  function enviarMail(){
-
-    require_once('view/extras/contact_process.php');
-
-  }
-
 
   function cerrar_sesion()
   {

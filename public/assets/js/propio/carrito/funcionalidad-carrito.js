@@ -5,7 +5,10 @@ export function agregarYActualizarDisenioAlAgregarAlCarrito(producto, $elementoD
   localStorage.setItem('productos', JSON.stringify(arrayObtenido));
   $elementoDondeSeColocaLaCantidadDeProductosEnCarrito.innerText = cantidadDeProductosEnCarrito();
   //seteamos el like ya que es el ID del svg del corazon y le colocamos un id para que sepa a que id tiene que ir de los productos (home y shop.php)
-  document.getElementById(`like${producto.id}`).classList.add('color');
+
+  if (document.getElementById(`like${producto.id}`) != null) {
+    document.getElementById(`like${producto.id}`).classList.add('color');
+  }
   elementoClickeado.innerText = 'Delete from cart'
 }
 
@@ -17,7 +20,10 @@ export function eliminarYActualizarDisenioAlQuitarDelCarrito($elementoDondeSeCol
     }
   }
   localStorage.setItem('productos', JSON.stringify(aux));
-  document.getElementById(`like${idProducto}`).classList.remove('color');
+  if (document.getElementById(`like${idProducto}`) != null) {
+    document.getElementById(`like${idProducto}`).classList.remove('color');
+
+  }
   $elementoDondeSeColocaLaCantidadDeProductosEnCarrito.innerText = cantidadDeProductosEnCarrito();
   document.getElementById(elementoClickeado.id).innerText = 'Add to cart'
 }

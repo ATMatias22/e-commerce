@@ -49,8 +49,10 @@ class productosDAO
 
   public static function  productosPopulares()
   {
+    $popular = 1;
     Conexion::conectar();
-    Conexion::preparar('select * from Producto where popular=1');
+    Conexion::preparar("SELECT * FROM Producto where popular = :popular");
+    Conexion::statement()->bindParam(':popular', $popular, PDO::PARAM_INT);
     Conexion::statement()->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Producto", ['id', 'nombre', 'precio', 'descripcion', 'nuevo', 'popular']);
     Conexion::statement()->execute();
     $arrayProductos = Conexion::statement()->fetchAll();

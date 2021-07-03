@@ -26,7 +26,7 @@ export function construccionDelProudctoEnCarrito(id, nombre, precio) {
             </div>
                 </td>
           <td>
-            <h5>$720.00</h5>
+            <h5 class='precio-producto'>$${precio}</h5>
           </td>
               `
   return templateCarrito;

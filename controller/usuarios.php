@@ -43,15 +43,15 @@ class usuarios
           header("Location: ./index.php?controller=home&action=inicio");
         } else {
           $_SESSION["msg"] = "El usuario ya existe";
-          require_once("view/login.php");
+          require_once("view/register.php");
         }
       } else {
         $_SESSION["msg"] = "Campos incompletos";
-        require_once("view/login.php");
+        require_once("view/register.php");
       }
     } else {
       $_SESSION["msg"] = "Campos incompletos";
-      require_once("view/login.php");
+      require_once("view/register.php");
     }
   }
 }

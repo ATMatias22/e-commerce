@@ -24,7 +24,6 @@ export function guardarCarrito(e, $elementoDondeSeColocaLaCantidadDeProductosEnC
     if (!existeProductoEnCarrito(idProducto)) {
       let producto = ({ id: idProducto, nombre, precio });
       agregarYActualizarDisenioAlAgregarAlCarrito(producto, $elementoDondeSeColocaLaCantidadDeProductosEnCarrito, e.target);
-
     } else {
       eliminarYActualizarDisenioAlQuitarDelCarrito($elementoDondeSeColocaLaCantidadDeProductosEnCarrito, idProducto, e.target);
     }
@@ -57,7 +56,10 @@ function modificarProductosSiEstanEnElCarrito($formulario, $posicionDelBoton, $e
       if (encontrado === true) {
         $elementoDondeSeColocaLaCantidadDeProductosEnCarrito.innerText = cantidadDeProductosEnCarrito();
         //seteamos el like ya que es el ID del svg del corazon y le colocamos un id para que sepa a que id tiene que ir de los productos (home y shop.php)
-        document.getElementById(`like${prodID}`).classList.add('color');
+        if (document.getElementById(`like${prodID}`) != null) {
+          document.getElementById(`like${prodID}`).classList.add('color');
+
+        }
         document.getElementById(hijo.children[$posicionDelBoton].id).innerText = 'Delete from cart'
       } else {
         $elementoDondeSeColocaLaCantidadDeProductosEnCarrito.innerText = cantidadDeProductosEnCarrito();

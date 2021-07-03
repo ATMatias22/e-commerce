@@ -1,4 +1,5 @@
 <?php
+//ESTA VARIABLE SIRVE PARA CAMBIAR EL TITLE AL HEADER, EL HEADER CONTIENE UNA VARIABLE $NOMRBESECCION EN LA ETIQUETA TITLE
 $nombreSeccion = "Product Details";
 
 require_once("./view/constantes.php");
@@ -56,7 +57,12 @@ require_once(HEADER_TEMPLATE);
                 <p>Quantity</p> -->
               </div>
               <div class="add_to_cart text-center">
-                <a href="#" class="btn_3">add to cart</a>
+                <form action="" class="carrito">
+                  <input type="text" class="d-none" value=<?=$producto->getId() ?>>
+                  <input type="text" class="d-none" value="<?=$producto->getNombre()?>">
+                  <input type="text" class="d-none" value=<?=$producto->getPrecio()?>>
+                  <span class="enviarIDProducto btn btn-danger" id='producto<?= $producto->getId() ?>'>Add to cart</span>
+                </form>
               </div>
             </div>
           </div>

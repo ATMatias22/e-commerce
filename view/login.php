@@ -1,4 +1,5 @@
 <?php
+//ESTA VARIABLE SIRVE PARA CAMBIAR EL TITLE AL HEADER, EL HEADER CONTIENE UNA VARIABLE $NOMRBESECCION EN LA ETIQUETA TITLE
 $nombreSeccion = "Login";
 
 require_once("./view/constantes.php");

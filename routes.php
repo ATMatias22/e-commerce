@@ -15,7 +15,8 @@ $controllers = array(
   "usuarios" => ["login", "registrar"],
   "productos" => ["shop","productosNuevos", "productosOrdenadosPorPrecio","productosPopulares","mostrarProducto", "buscarProductoPorNombre"],
   "suscripcion" => ["suscribir"],
-  "errores" => ["errorRuta", "errorProducto"]
+  "errores" => ["errorRuta", "errorProducto"],
+  "contactos" => ["contact"]
 );
 
 if (array_key_exists($controller, $controllers)) {

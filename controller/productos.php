@@ -6,7 +6,7 @@ session_start();
 
 class  productos
 {
-
+  //esta ruta es utilizada en las vistas que muestran los productos
   public const RUTA_IMGS = "./public/assets/img/products/product";
 
 
@@ -36,18 +36,20 @@ class  productos
 
   private function mostrarProductoIndividual($producto, $idProducto)
   {
+    
+    //el $producto del parametro es utilizado cuando se llaman a las vistas, ya que esa view/product_details.php pide un producto
 
-    //RUTA DONDE ESTAN LAS IMAGENES
-    //ESTO FUNCIONA SI ALGUIEN COMENTA ALGO SOBRE EL PRODUCTO
-    //VERIFICAMOS SI SE ENVIO EL COMENTARIO
+    //GUARDAMOS EN UN ARRAY LOS COMENTARIOS DEL PRODUCTO INDIVIDUAL PARA MOSTRARLO EN LA VISTA
     $comentarios = ComentarioDAO::mostrarComentariosParaCadaProducto($idProducto);
 
+    //VERIFICAMOS SI ALGUIEN MANDO UN COMENTARIO SINO MOSTRAMOS LA VISTA NORMALMENTE
     if (isset($_POST['in_enviar_comentario'])) {
-      //VERIFICAMOS SI EL USUARIO ESTA LOGUEADO
+      //VERIFICAMOS SI EL USUARIO ESTA LOGUEADO SINO LE PEDIMOS QUE SE LOGUEE PARA QUE PUEDA COMENTAR
       if (isset($_SESSION['username'])) {
         $idUsuario = $_SESSION['id'];
         $comentario = $_POST['in_comentario'];
         ComentarioDAO::crearComentario($idProducto, $idUsuario, $comentario);
+        //VOLVEMOS A SOBREESCRIBIR EL ARRAY PERO CON EL NUEVO COMENTARIO AGREGADO
         $comentarios = ComentarioDAO::mostrarComentariosParaCadaProducto($idProducto);
         require_once("view/product_details.php");
         require_once("view/modal/modal_comentario_recibido.php");
@@ -62,19 +64,18 @@ class  productos
 
   public function mostrarProducto()
   {
+    //VERIFICAMOS QUE  EXISTA LA VARIABLE productoID EN CASO DE NO EXISTIR LA VARIABLE PRODUCTOID NOS MANDA UN ERROR DE RUTA
     if (isset($_GET['productoID'])) {
       $idProducto = (int) $_GET['productoID'];
       $producto = productosDAO::mostrarProducto($idProducto);
-      //ESTO VERIFICA QUE HAYAN PASADO UN ID DE PRODUCTO EXISTENTE
+      //ESTO VERIFICA SI NO SE ENCONTRO PRODUCTO Y NOS MANDA ERROR DE ID PRODUCTO, EN CASO CONTRARIO NOS MUESTRA EL PRODUCTO INDIVIDUAL
       if ($producto == null) {
-        call('errores', 'errorProducto');
-         /* require_once('./index.php?controller=errores&action=errorProducto'); */
-        /*  header("Location: ./index.php?controller=errores&action=errorProducto&productoID={$idProducto}"); */
+        header("Location: ./index.php?controller=errores&action=errorProducto&productoID={$idProducto}");
       } else {
         $this->mostrarProductoIndividual($producto, $idProducto);
       }
     } else {
-      call('errores', 'errorRuta');
+      header("Location: ./index.php?controller=errores&action=errorRuta");
     }
   }
 
@@ -87,38 +88,4 @@ class  productos
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* 
-  private function estaEncontrado($producto, $idProducto)
-  {
-   
-  }
-
-  public function buscarProductoPorNombre()
-  {
-    $nombreProducto = $_GET['searchProduct'];
-    $producto = productosDAO::buscarProductoPorNombre($nombreProducto);
-    if ($producto == null) {
-      $mensaje = "El producto de nombre {$nombreProducto} no existe en nuestro sitio";
-      require_once("view/error.php");
-    }
-    $idProducto = $producto->getId();
-    $this->estaEncontrado($producto, $idProducto);
-   
-  } */
 }

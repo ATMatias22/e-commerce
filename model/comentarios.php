@@ -6,7 +6,6 @@ class ComentarioDAO
 
   public static function crearComentario($idProducto, $idUsuario, $comentario)
   {
-
     date_default_timezone_set('America/Argentina/Buenos_Aires'); // seteo hora local
     $fechaDePublicacion =  date('Y-m-d H:i:s');
     Conexion::conectar();

@@ -1,30 +1,56 @@
 <?php
 
-    $to = "jp7592469@gmail.com";
-    $from = $_REQUEST['email'];
-    $name = $_REQUEST['name'];
-    $subject = $_REQUEST['subject'];
-    $cmessage = $_REQUEST['message'];
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
 
-    $subject = "You have a message from your Bitmap Photography.";
+$to = "jp7592469@gmail.com";
+$from = $_POST['email'];
+$name = $_POST['name'];
+$subject = $_POST['subject'];
+$cmessage = $_POST['message'];
+$mail = new PHPMailer(true);
 
-    $logo = 'img/logo.png';
-    $link = '#';
+try {
+  //Server settings
+  $mail->SMTPDebug = 0;                      //Enable verbose debug output
+  $mail->isSMTP();                                            //Send using SMTP
+  $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+  $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+  $mail->Username   = 'jp7592469@gmail.com';                     //SMTP username
+  $mail->Password   = 'asd';                               //SMTP password
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+  $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-	$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
-	$body .= "<table style='width: 100%;'>";
-	$body .= "<thead style='text-align: center;'><tr><td style='border:none;' colspan='2'>";
-	$body .= "<a href='{$link}'><img src='{$logo}' alt=''></a><br><br>";
-	$body .= "</td></tr></thead><tbody><tr>";
-	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
-	$body .= "<td style='border:none;'><strong>Email:</strong> {$from}</td>";
-	$body .= "</tr>";
-	$body .= "<tr><td></td></tr>";
-	$body .= "<tr><td colspan='2' style='border:none;'>{$cmessage}</td></tr>";
-	$body .= "</tbody></table>";
-	$body .= "</body></html>";
+  //Recipients
+  $mail->setFrom('jp7592469@gmail.com', 'Relojeria');     //Add a recipient
+  $mail->addAddress($from, $name);
 
-    $send = mail($to, $subject, $body);
+  //Content
+  $mail->isHTML(true);                                  //Set email format to HTML
+  $mail->Subject = $subject;
+  $mail->Body    = $cmessage;
 
+  $mail->send();
+  echo 'Message has been sent';
+} catch (Exception $e) {
+  echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -28,18 +28,6 @@
 
 <body>
 
-  <!--? Search model Begin -->
-  <div class="search-model-box">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-      <div class="search-close-btn">+</div>
-      <form class="search-model-form" method="GET" action="./index.php?controller=productos&action=buscarProductoPorNombre">
-        <input type="text" id="search-input" name='searchProduct' placeholder="Searching Product.....">
-        <!-- <input type="text" name="searchProduct" id="">
-        <input type="submit" name="enviado" id="" value="valor"> -->
-      </form>
-    </div>
-  </div>
-
 
   <!-- Search model end -->
 
@@ -73,18 +61,14 @@
                   <li><a href="./index.php">Home</a></li>
                   <li><a href="./index.php?controller=productos&action=shop">shop</a></li>
                   <li><a href="./index.php?controller=home&action=about">about</a></li>
-                  <li><a href=" ./index.php?controller=home&action=contact">Contact</a></li>
+                  <li><a href=" ./index.php?controller=contactos&action=contact">Contact</a></li>
                 </ul>
               </nav>
             </div>
             <!-- Header Right -->
             <div class="header-right">
               <ul>
-                <li>
-                  <div class="nav-search search-switch">
-                    <span class="flaticon-search"></span>
-                  </div>
-                </li>
+
                 <li>
                   <a href="./index.php?controller=home&action=cart">
                     <span class="flaticon-shopping-cart ">
@@ -92,6 +76,7 @@
                     </span>
                   </a>
                 </li>
+                <!--   SI HAY UNA SESION USERNAME ACTIVA SE PINTARA DE ROJO EL ICON-->
                 <li> <a href="./index.php?controller=home&action=login"><span class="flaticon-user" <?php if (isset($_SESSION['username'])) {
                                                                                                       echo "style='color:red'";
                                                                                                     } ?>>
@@ -99,7 +84,7 @@
                         echo $_SESSION['username'];
                       } ?></span></a></li>
 
-                <!--   CREAMOS OTRO LI PARA PONER EL ICONO DE LOGOUT -->
+                <!--   CREAMOS OTRO LI PARA PONER EL ICONO DE LOGOUT SI HAY UNA SESION USERNAME ACTIVA-->
                 <?php if (isset($_SESSION['username'])) {
                   echo "<li><a href='./index.php?controller=home&action=cerrar_sesion'><span class='flaticon-turn-off'></span></a> </li>";
                 } ?>

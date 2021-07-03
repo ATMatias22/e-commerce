@@ -41,7 +41,6 @@
 
     public static function buscarUsuarioPorId($id)
     {
-
       Conexion::conectar();
       Conexion::preparar("SELECT * FROM Usuario where id = :id");
       Conexion::statement()->bindParam(':id', $id, PDO::PARAM_INT);
@@ -49,11 +48,6 @@
       Conexion::statement()->execute();
       $objetoUsuario = Conexion::statement()->fetch();
       Conexion::desconectar();
-     /*  $idEncontrado = $objetoUsuario['id'];
-      $user = $objetoUsuario['user'];
-      $password = $objetoUsuario['password'];
-      $objetoUsuario = new Usuario($idEncontrado, $user, $password); */
-
       return $objetoUsuario->getUser();
     }
 

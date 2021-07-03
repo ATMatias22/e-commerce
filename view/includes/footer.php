@@ -31,7 +31,7 @@
             <div class="single-footer-caption mb-30">
               <!-- logo -->
               <div class="footer-logo">
-                <a href="index.html"><img src="./public/assets/img/logo/logo2_footer.png" alt=""></a>
+                <a href="./index.php?controller=home&action=inicio"><img src="./public/assets/img/logo/logo2_footer.png" alt=""></a>
               </div>
               <div class="footer-tittle">
                 <div class="footer-pera">
@@ -95,7 +95,7 @@
             <!-- social -->
             <div class="footer-social">
               <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
               <a href="#"><i class="fab fa-behance"></i></a>
               <a href="#"><i class="fas fa-globe"></i></a>
             </div>
@@ -147,7 +147,9 @@
 <script src="./public/assets/js/plugins.js"></script>
 <script src="./public/assets/js/main.js"></script>
 
+<!-- SWEETALERT -->
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="module" src="./public/assets/js/propio/script.js"></script>
 

@@ -1,5 +1,5 @@
 <?php
-
+//ESTA VARIABLE SIRVE PARA CAMBIAR EL TITLE AL HEADER, EL HEADER CONTIENE UNA VARIABLE $NOMRBESECCION EN LA ETIQUETA TITLE
 $nombreSeccion = "Register";
 
 require_once("./view/constantes.php");
@@ -38,6 +38,11 @@ require_once(HEADER_TEMPLATE);
         <div class="col-lg-6 col-md-6">
           <div class="login_part_form">
             <div class="login_part_form_iner">
+              <?php if (isset($_SESSION['msg'])) {
+                echo "<h2 style='color:red'>{$_SESSION['msg']}</h2>";
+                unset($_SESSION['msg']);
+              }
+              ?>
               <h3>
                 Please sign up
                 now</h3>
